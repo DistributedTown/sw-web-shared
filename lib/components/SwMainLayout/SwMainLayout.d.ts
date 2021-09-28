@@ -12,7 +12,7 @@ interface SwMainLayoutMenuItemLink extends SwMainLayoutMenuItemBase {
 }
 interface SwMainLayoutMenuItemButton extends SwMainLayoutMenuItemBase {
     type: "button";
-    onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    onClick?: (info: any) => void;
 }
 export declare type SwMainLayoutMenuItem = SwMainLayoutMenuItemLink | SwMainLayoutMenuItemButton;
 export interface SwMainLayoutProps {
@@ -22,6 +22,8 @@ export interface SwMainLayoutProps {
     contentBackgroundColor?: string;
     sidebarBackgroundColor?: string;
     collapsed?: boolean;
+    width?: number | string;
+    children: JSX.Element;
 }
-declare const SwMainLayout: ({ menuItems, backgroundUrl, contentBackgroundColor, sidebarBackgroundColor, collapsed }: SwMainLayoutProps) => JSX.Element;
+declare const SwMainLayout: ({ menuItems, backgroundUrl, contentBackgroundColor, sidebarBackgroundColor, collapsed, width, children, }: SwMainLayoutProps) => JSX.Element;
 export default SwMainLayout;

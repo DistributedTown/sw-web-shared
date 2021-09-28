@@ -3,6 +3,7 @@ import { Meta } from "@storybook/react/types-6-0";
 import SwMainLayout, { SwMainLayoutProps } from "./SwMainLayout";
 import { Story } from "@storybook/react";
 import "antd/dist/antd.css";
+import { PieChartOutlined } from "@ant-design/icons";
 
 export default {
   title: "Components/SwMainLayout",
@@ -16,15 +17,40 @@ export default {
 const Template: Story<SwMainLayoutProps> = (args) => <SwMainLayout {...args} />;
 
 // Reuse that template for creating different stories
+
+
+
+const menuItems = [
+  {
+    type: "button",
+    label: "SkillWallet",
+    icon: <PieChartOutlined />,
+  },
+  {
+    type: "button",
+    label: "dTownHall",
+    icon: <PieChartOutlined />,
+  },
+  {
+    type: "button",
+    label: "Notifications",
+    icon: <PieChartOutlined />,
+  },
+  {
+    type: "button",
+    label: "Settings",
+    icon: <PieChartOutlined />,
+  },
+  {
+    type: "button",
+    label: "Log off",
+    icon: <PieChartOutlined />,
+  },
+];
 export const Collapsed = Template.bind({});
 Collapsed.args = {
   collapsed: true,
-  menuItems: [
-    {
-      type: "button",
-      label: "Test",
-    },
-  ],
+  menuItems: menuItems as any[],
 };
 
 export const Expanded = Template.bind({});

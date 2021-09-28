@@ -32,5 +32,14 @@ export default {
       extensions: [".css", ".scss"],
       use: ["sass"],
     }),
+    // copy({
+    //   targets: [
+    //     {
+    //       src: "src/styles/variables.scss",
+    //       dest: "build",
+    //       rename: "variables.scss",
+    //     }
+    //   ],
+    // }),
   ],
 };

@@ -17,7 +17,7 @@ interface SwMainLayoutMenuItemLink extends SwMainLayoutMenuItemBase {
 
 interface SwMainLayoutMenuItemButton extends SwMainLayoutMenuItemBase {
   type: "button";
-  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onClick?: (info: any) => void;
 }
 
 export type SwMainLayoutMenuItem =
@@ -31,20 +31,27 @@ export interface SwMainLayoutProps {
   contentBackgroundColor?: string;
   sidebarBackgroundColor?: string;
   collapsed?: boolean;
+  width?: number | string;
+  children: JSX.Element;
 }
+
+const { Content, Sider } = Layout;
 
 const SwMainLayout = ({
   menuItems = [],
   backgroundUrl = "",
   contentBackgroundColor = "black",
   sidebarBackgroundColor = "black",
-  collapsed = false
+  collapsed = false,
+  width = 300,
+  children = "" as any,
 }: SwMainLayoutProps) => {
-  const { Content, Sider } = Layout;
   const [collapse, onCollapse] = useState(collapsed);
   return (
     <Layout className="sw-main-layout">
       <Sider
+        collapsedWidth={100}
+        width={width}
         className="sw-main-sidebar"
         collapsible
         collapsed={collapse}
@@ -72,8 +79,8 @@ const SwMainLayout = ({
             }
 
             return (
-              <Menu.Item key={id} icon={item.icon}>
-                <button onClick={item.onClick}>{item.label}</button>
+              <Menu.Item key={id} icon={item.icon} onClick={item.onClick}>
+                {item.label}
               </Menu.Item>
             );
           })}
@@ -81,7 +88,7 @@ const SwMainLayout = ({
       </Sider>
       <Layout className="site-layout">
         <Content style={{ margin: "0 16px" }}>
-          <div className="site-layout-background">Bill is a cat.</div>
+          <div className="site-layout-background">{children}</div>
         </Content>
       </Layout>
     </Layout>
