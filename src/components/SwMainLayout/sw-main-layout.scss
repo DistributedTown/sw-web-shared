@@ -1,0 +1,18 @@
+.sw-main-layout {
+  .sw-main-sidebar {
+    height: 100vh;
+
+    .ant-layout-sider-children {
+      display: flex;
+      flex-direction: column;
+
+      .logo {
+        flex: 40%;
+      }
+
+      .ant-menu {
+        flex: 60%;
+      }
+    }
+  }
+}
