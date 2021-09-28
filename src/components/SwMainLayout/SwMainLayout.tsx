@@ -30,6 +30,7 @@ export interface SwMainLayoutProps {
   logo: string;
   contentBackgroundColor?: string;
   sidebarBackgroundColor?: string;
+  collapsed?: boolean;
 }
 
 const SwMainLayout = ({
@@ -37,16 +38,17 @@ const SwMainLayout = ({
   backgroundUrl = "",
   contentBackgroundColor = "black",
   sidebarBackgroundColor = "black",
+  collapsed = false
 }: SwMainLayoutProps) => {
   const { Content, Sider } = Layout;
-  const [collapsed, onCollapsed] = useState(false);
+  const [collapse, onCollapse] = useState(collapsed);
   return (
     <Layout className="sw-main-layout">
       <Sider
         className="sw-main-sidebar"
         collapsible
-        collapsed={collapsed}
-        onCollapse={() => onCollapsed(!collapsed)}
+        collapsed={collapse}
+        onCollapse={() => onCollapse(!collapse)}
       >
         <div className="logo" />
         <Menu defaultSelectedKeys={["1"]} mode="inline">

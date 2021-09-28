@@ -2,12 +2,13 @@ import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import SwMainLayout, { SwMainLayoutProps } from "./SwMainLayout";
 import { Story } from "@storybook/react";
+import "antd/dist/antd.css";
 
 export default {
   title: "Components/SwMainLayout",
   component: SwMainLayout,
-  argTypes: {
-    backgroundColor: { control: "color" },
+  parameters:{
+    layout:'fullscreen',
   },
 } as Meta;
 
@@ -15,8 +16,16 @@ export default {
 const Template: Story<SwMainLayoutProps> = (args) => <SwMainLayout {...args} />;
 
 // Reuse that template for creating different stories
-export const Primary = Template.bind({});
-Primary.args = { menuItems: [] };
+export const Collapsed = Template.bind({});
+Collapsed.args = {
+  collapsed: true,
+  menuItems: [
+    {
+      type: "button",
+      label: "Test",
+    },
+  ],
+};
 
-export const Secondary = Template.bind({});
-Secondary.args = { ...Primary.args };
+export const Expanded = Template.bind({});
+Expanded.args = { ...Collapsed.args, collapsed: false };

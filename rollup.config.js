@@ -23,15 +23,8 @@ export default {
       sourcemap: true,
     },
   ],
-  context: "this",
-  external: [
-    ...Object.keys(packageJson.dependencies || {}),
-    ...Object.keys(packageJson.peerDependencies || {}),
-  ],
   plugins: [
-    peerDepsExternal({
-      includeDependencies: true,
-    }),
+    peerDepsExternal(),
     resolve(),
     commonjs(),
     typescript({ useTsconfigDeclarationDir: true }),

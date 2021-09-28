@@ -21,6 +21,7 @@ export interface SwMainLayoutProps {
     logo: string;
     contentBackgroundColor?: string;
     sidebarBackgroundColor?: string;
+    collapsed?: boolean;
 }
-declare const SwMainLayout: ({ menuItems, backgroundUrl, contentBackgroundColor, sidebarBackgroundColor, }: SwMainLayoutProps) => JSX.Element;
+declare const SwMainLayout: ({ menuItems, backgroundUrl, contentBackgroundColor, sidebarBackgroundColor, collapsed }: SwMainLayoutProps) => JSX.Element;
 export default SwMainLayout;
