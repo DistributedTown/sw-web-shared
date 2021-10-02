@@ -1,0 +1,6 @@
+@import "../../styles/variables.scss";
+
+
+.sw-main-box > .MuiBox-root > .MuiContainer-root {
+    height: calc(100% - 64px) !important;
+}

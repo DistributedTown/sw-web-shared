@@ -3,6 +3,8 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
+import copy from 'rollup-plugin-copy';
+const svgr = require('@svgr/rollup').default;
 
 const packageJson = require("./package.json");
 
@@ -23,7 +25,9 @@ export default {
       sourcemap: true,
     },
   ],
+  context: 'this',
   plugins: [
+    svgr(),
     peerDepsExternal(),
     resolve(),
     commonjs(),
@@ -32,14 +36,25 @@ export default {
       extensions: [".css", ".scss"],
       use: ["sass"],
     }),
-    // copy({
-    //   targets: [
-    //     {
-    //       src: "src/styles/variables.scss",
-    //       dest: "build",
-    //       rename: "variables.scss",
-    //     }
-    //   ],
-    // }),
+    copy({
+      targets: [
+        { src: 'src/assets/**/*', dest: 'lib/assets' },
+        {
+          src: "src/components/index.scss",
+          dest: "lib/components",
+          rename: "index.scss",
+        },
+        {
+          src: "src/styles/variables.scss",
+          dest: "lib/styles",
+          rename: "variables.scss",
+        },
+        {
+          src: "src/styles/web-shared.scss",
+          dest: "lib/styles",
+          rename: "web-shared.scss",
+        }
+      ],
+    }),
   ],
 };
