@@ -1,10 +1,8 @@
 @import "../../styles/variables.scss";
 
 .sw-main-sidebar {
-  border-right: 4px solid $foreground-color;
-
   .MuiDrawer-paper {
-    padding: 50px;
+    // padding: 50px;
   }
 
   .sw-sidebar-divider {
@@ -21,6 +19,9 @@
 
   .sw-sidebar-top {
     flex: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .sw-sidebar-menu {

@@ -7,6 +7,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import "./sw-sidebar.scss";
 import { NavLink, useRouteMatch } from "react-router-dom";
+import Tooltip from "@mui/material/Tooltip/Tooltip";
 
 interface SwSidebarMenuItemBase {
   color?: "primary" | "warn" | "secondary";
@@ -45,7 +46,9 @@ const DrawerRef = (drawerWidth: number, backgroundColor: string) =>
     "& .MuiDrawer-paper": {
       position: "relative",
       whiteSpace: "nowrap",
+      padding: "50px",
       width: drawerWidth,
+      borderRight: `4px solid ${theme.palette.text.primary}`,
       transition: theme.transitions.create("width", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
@@ -58,11 +61,19 @@ const DrawerRef = (drawerWidth: number, backgroundColor: string) =>
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.leavingScreen,
         }),
+        padding: "10px",
         width: theme.spacing(7),
         [theme.breakpoints.up("sm")]: {
           width: theme.spacing(9),
         },
+        ".MuiList-root .MuiListItem-root": {
+          padding: 0,
+          ".MuiListItemText-root": {
+            display: "none",
+          },
+        },
       }),
+      "& > .MuiList-root .MuiListItem-root": {},
     },
   }));
 
@@ -75,7 +86,6 @@ const SwSidebar = ({
   sidebarTop = null,
 }: SwSidebarProps) => {
   let { path, url } = useRouteMatch();
-  console.log(path, url, 'here');
   const Drawer = DrawerRef(width, backgroundColor);
   const [opened, setOpened] = React.useState(open);
   return (
@@ -87,16 +97,22 @@ const SwSidebar = ({
             return <Divider key={id} className="sw-sidebar-divider" />;
           }
           return (
-            <ListItem
-              exact={true}
-              activeClassName="active-link"
-              component={NavLink}
-              to={item.href}
+            <Tooltip
               key={id}
+              title={!opened ? item.label : ""}
+              placement="right"
             >
-              <div className="sw-sidebar-menu-icon">{item.icon}</div>
-              <ListItemText primary={item.label} />
-            </ListItem>
+              <ListItem
+                exact={true}
+                activeClassName="active-link"
+                component={NavLink}
+                to={item.href}
+                key={id}
+              >
+                <div className="sw-sidebar-menu-icon">{item.icon}</div>
+                <ListItemText primary={item.label} />
+              </ListItem>
+            </Tooltip>
           );
         })}
       </List>

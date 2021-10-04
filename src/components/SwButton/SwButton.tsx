@@ -15,7 +15,13 @@ const CustomizedButton = styled(Button)(
   border: 2px solid ${theme.palette.text.primary};
   height: 56px;
   cursor: pointer;
+  line-height: 0;
   color: ${theme.palette.primary.main};
+
+
+  &.Mui-disabled {
+    background-color: ${theme.palette.text.primary};
+  }
 
   &:hover,
   &.active-link {

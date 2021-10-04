@@ -5,4 +5,5 @@ import { default as JoinSelSvg } from "./components/Svg/JoinSelSvg";
 import { default as DitoLogoSvg } from "./components/Svg/DitoLogoSvg";
 import { default as SwButton } from "./components/SwButton/SwButton";
 import { default as SwLogoSvg } from "./components/Svg/SwLogoSvg";
-export { SwLayout, SwSidebar, MainBackgroundSvg, SwButton, JoinSelSvg, DitoLogoSvg, SwLogoSvg };
+import { default as DitoLogoFullSvg } from "./components/Svg/DitoLogoFullSvg";
+export { SwLayout, SwSidebar, MainBackgroundSvg, SwButton, JoinSelSvg, DitoLogoSvg, SwLogoSvg, DitoLogoFullSvg };

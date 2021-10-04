@@ -2,7 +2,7 @@ import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
 import { SvgInputModel } from "./input.model";
-import DitoLogoSvg from "./DitoLogoSvg";
+import DitoLogoSvg from "./DitoLogoFullSvg";
 import JoinSelSvg from "./JoinSelSvg";
 import MainBackgroundSvg from "./MainBackgroundSvg";
 import SwLogoSvg from "./SwLogoSvg";

@@ -1,7 +1,7 @@
 import React from "react";
 import { SvgInputModel } from "./input.model";
 
-function DitoLogoSvg(
+function DitoLogoFullSvg(
   { height, width, className }: SvgInputModel = {
     height: "100%",
     width: "100%",
@@ -13,19 +13,10 @@ function DitoLogoSvg(
       xmlns="http://www.w3.org/2000/svg"
       style={{ height, width }}
       className={className}
-      viewBox="0 0 76.397 76.397"
+      viewBox="0 0 279.897 76.397"
     >
-      <g
-        xmlns="http://www.w3.org/2000/svg"
-        fill="#fff"
-        data-name="Group 1818"
-        transform="translate(-2538.506 -214.397)"
-      >
-        <g
-          xmlns="http://www.w3.org/2000/svg"
-          data-name="Group 12"
-          transform="translate(2538.913 214.804)"
-        >
+      <g data-name="Group 1818" transform="translate(-2538.506 -214.397)">
+        <g data-name="Group 12" transform="translate(2538.913 214.804)">
           <g data-name="Path 1-2">
             <path
               fill="#fff"
@@ -85,9 +76,23 @@ function DitoLogoSvg(
             ></path>
           </g>
         </g>
+        <text
+          fill="#fff"
+          data-name="DISTRIBUTED TOWN"
+          fontFamily="Magistral-Book, Magistral"
+          fontSize="28"
+          transform="translate(2632.403 244.394)"
+        >
+          <tspan x="0" y="0">
+            DISTRIBUTED
+          </tspan>
+          <tspan x="0" y="34">
+            TOWN
+          </tspan>
+        </text>
       </g>
     </svg>
   );
 }
 
-export default DitoLogoSvg;
+export default DitoLogoFullSvg;
