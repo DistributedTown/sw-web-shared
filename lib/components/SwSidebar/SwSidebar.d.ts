@@ -4,7 +4,6 @@ interface SwSidebarMenuItemBase {
     color?: "primary" | "warn" | "secondary";
     icon?: React.Component;
     component?: React.Component;
-    label: string;
     children?: SwSidebarMenuItem[];
 }
 interface SwSidebarMenuDivider {
@@ -13,12 +12,17 @@ interface SwSidebarMenuDivider {
 }
 interface SwSidebarMenuItemButton extends SwSidebarMenuItemBase {
     type: "button";
-    href?: string;
+    label: string;
     onClick?: (info: any) => void;
 }
-export declare type SwSidebarMenuItem = SwSidebarMenuItemButton | SwSidebarMenuDivider;
+interface SwSidebarMenuItemHref extends SwSidebarMenuItemBase {
+    type: "href";
+    label: string;
+    href?: string;
+}
+export declare type SwSidebarMenuItem = SwSidebarMenuItemButton | SwSidebarMenuDivider | SwSidebarMenuItemHref;
 export interface SwSidebarProps {
-    menuItems: SwSidebarMenuItem[];
+    menuItems: Partial<SwSidebarMenuItem>[];
     open?: boolean;
     width?: number;
     backgroundColor?: string;

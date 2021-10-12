@@ -2,6 +2,8 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "./sw-layout.scss";
+import styled from "styled-components";
+import SwScrollbar from "../SwScrollbar/SwScrollbar";
 
 export interface SwLayoutProps {
   backgroundUrl?: any;
@@ -9,13 +11,24 @@ export interface SwLayoutProps {
   children?: JSX.Element;
   drawer?: JSX.Element;
   className?: string;
+  top?: JSX.Element;
 }
+
+const CustomizedLayout = styled(Box)(
+  ({ theme }) => `
+  .MuiContainer-root:not(.sw-layout-top) {
+    position: relative;
+    height: calc(100% - 64px);
+  }
+`
+);
 
 const SwLayout = ({
   backgroundUrl = null,
   contentBackgroundColor = null,
   children = null,
   drawer = null,
+  top = null,
   className = "",
 }: SwLayoutProps) => {
   return (
@@ -36,7 +49,7 @@ const SwLayout = ({
           zIndex: -1,
         }}
       ></div>
-      <Box
+      <CustomizedLayout
         sx={{
           display: "flex",
         }}
@@ -48,14 +61,29 @@ const SwLayout = ({
           sx={{
             flexGrow: 1,
             height: "100vh",
-            overflow: "auto",
+            overflow: "hidden",
           }}
         >
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            {children}
+          <Container className="sw-layout-top" maxWidth="xl">
+            {top}
           </Container>
+          <SwScrollbar
+            sx={{
+              height: "calc(100% - 50px)",
+            }}
+          >
+            <Container
+              maxWidth="xl"
+              sx={{
+                mt: 4,
+                mb: 4,
+              }}
+            >
+              {children}
+            </Container>
+          </SwScrollbar>
         </Box>
-      </Box>
+      </CustomizedLayout>
     </>
   );
 };

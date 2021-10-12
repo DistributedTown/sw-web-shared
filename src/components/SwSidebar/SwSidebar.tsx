@@ -6,14 +6,13 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import "./sw-sidebar.scss";
-import { NavLink, useRouteMatch } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip/Tooltip";
 
 interface SwSidebarMenuItemBase {
   color?: "primary" | "warn" | "secondary";
   icon?: React.Component;
   component?: React.Component;
-  label: string;
   children?: SwSidebarMenuItem[];
 }
 
@@ -24,14 +23,23 @@ interface SwSidebarMenuDivider {
 
 interface SwSidebarMenuItemButton extends SwSidebarMenuItemBase {
   type: "button";
-  href?: string;
+  label: string;
   onClick?: (info: any) => void;
 }
 
-export type SwSidebarMenuItem = SwSidebarMenuItemButton | SwSidebarMenuDivider;
+interface SwSidebarMenuItemHref extends SwSidebarMenuItemBase {
+  type: "href";
+  label: string;
+  href?: string;
+}
+
+export type SwSidebarMenuItem =
+  | SwSidebarMenuItemButton
+  | SwSidebarMenuDivider
+  | SwSidebarMenuItemHref;
 
 export interface SwSidebarProps {
-  menuItems: SwSidebarMenuItem[];
+  menuItems: Partial<SwSidebarMenuItem>[];
   open?: boolean;
   width?: number;
   backgroundColor?: string;
@@ -77,6 +85,8 @@ const DrawerRef = (drawerWidth: number, backgroundColor: string) =>
     },
   }));
 
+
+
 const SwSidebar = ({
   menuItems = [],
   open = false,
@@ -85,7 +95,6 @@ const SwSidebar = ({
   variant = "permanent",
   sidebarTop = null,
 }: SwSidebarProps) => {
-  let { path, url } = useRouteMatch();
   const Drawer = DrawerRef(width, backgroundColor);
   const [opened, setOpened] = React.useState(open);
   return (
@@ -96,19 +105,35 @@ const SwSidebar = ({
           if (item.type === "divider") {
             return <Divider key={id} className="sw-sidebar-divider" />;
           }
+
+          if (item.type === "href") {
+            return (
+              <Tooltip
+                key={id}
+                title={!opened ? item.label : ""}
+                placement="right"
+              >
+                <ListItem
+                  exact={true}
+                  activeClassName="active-link"
+                  component={NavLink}
+                  to={item.href}
+                  key={id}
+                >
+                  <div className="sw-sidebar-menu-icon">{item.icon}</div>
+                  <ListItemText primary={item.label} />
+                </ListItem>
+              </Tooltip>
+            );
+          }
+
           return (
             <Tooltip
               key={id}
               title={!opened ? item.label : ""}
               placement="right"
             >
-              <ListItem
-                exact={true}
-                activeClassName="active-link"
-                component={NavLink}
-                to={item.href}
-                key={id}
-              >
+              <ListItem onClick={item.onClick} key={id}>
                 <div className="sw-sidebar-menu-icon">{item.icon}</div>
                 <ListItemText primary={item.label} />
               </ListItem>

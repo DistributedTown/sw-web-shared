@@ -21,7 +21,7 @@ const Template: Story<SwSidebarProps> = (args) => <SwSidebar {...args} />;
 const menuItems: any[] = [
   {
     label: "SkillWallet",
-    href: "/",
+    href: "/community/skillwallet",
     icon: <SvgIcon component={JoinSelSvg} />,
   },
   {
@@ -44,7 +44,8 @@ const menuItems: any[] = [
   },
   {
     label: "Log off",
-    href: "/community/logout",
+    type: 'button',
+    onClick: (e) => console.log(e),
     icon: <SvgIcon component={JoinSelSvg} />,
   },
 ];

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, ButtonProps, styled } from "@mui/material";
+import { Button, ButtonProps, darken, styled } from "@mui/material";
 import "./sw-button.scss";
 
 export interface SwButtonProps extends ButtonProps {
@@ -7,6 +7,8 @@ export interface SwButtonProps extends ButtonProps {
   component?: any; 
   to?: string;
 }
+
+const darkenedColor50Percent = (color) => darken(color, 0.5);
 
 const CustomizedButton = styled(Button)(
   ({ theme }) => `
@@ -20,7 +22,7 @@ const CustomizedButton = styled(Button)(
 
 
   &.Mui-disabled {
-    background-color: ${theme.palette.text.primary};
+    background-color: ${theme.palette.text.primary} !important;
   }
 
   &:hover,
@@ -43,9 +45,9 @@ const SwButton = ({
       {...rest}
       variant={variant}
       color={color}
-      className={`"sw-button" ${className}`}
+      className={`sw-button ${className}`}
     >
-      <span className="sw-btn-label">{label}</span>
+      <span style={{marginTop: '4px'}} className="sw-btn-label">{label}</span>
     </CustomizedButton>
   );
 };

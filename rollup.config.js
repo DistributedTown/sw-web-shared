@@ -50,6 +50,11 @@ export default {
           rename: "variables.scss",
         },
         {
+          src: "src/styles/breakpoints.scss",
+          dest: "lib/styles",
+          rename: "breakpoints.scss",
+        },
+        {
           src: "src/styles/web-shared.scss",
           dest: "lib/styles",
           rename: "web-shared.scss",
