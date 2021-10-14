@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgInputModel } from "./input.model";
+import { SvgInputModel } from "../input.model";
 
 function JoinSelSvg(
   { height, width, className }: SvgInputModel = {
@@ -10,10 +10,10 @@ function JoinSelSvg(
 ) {
   return (
     <svg
+      xmlns="http://www.w3.org/2000/svg"
       style={{ height, width }}
       className={className}
       viewBox="0 0 52.492 36"
-      xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
         <linearGradient

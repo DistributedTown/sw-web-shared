@@ -1,15 +1,13 @@
 import * as React from "react";
 
-const SwSvg = ({
+const NavbarSvg = ({
   label,
   className = "",
   variant = "contained",
   color = "primary",
   ...rest
 }) => {
-  return (
-    <div></div>
-  );
+  return <div></div>;
 };
 
-export default SwSvg;
+export default NavbarSvg;
