@@ -1,0 +1,11 @@
+@import "../../styles/variables.scss";
+
+.sw-box-quote {
+  
+}
+
+.quote {
+  padding: 20px;
+  border: 2px solid $border-color-base;
+  background: rgba($primary-color, 0.8);
+}

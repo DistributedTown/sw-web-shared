@@ -1,6 +1,11 @@
 @import "../../styles/variables.scss";
 
-
-.sw-main-box > .MuiBox-root > .MuiContainer-root {
-    height: calc(100% - 64px) !important;
+.sw-main-box {
+  .sw-layout-top {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px;
+  }
 }
