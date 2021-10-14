@@ -12,7 +12,7 @@ import FooterShareSvg from "./FooterShareSvg";
 import FooterMembersSvg from "./FooterMembersSvg";
 
 export default {
-  title: "Components/NavbarSvg",
+  title: "SVGComponents/NavbarSvg",
   component: NavbarSvg,
   parameters: {
     layout: "fullscreen",

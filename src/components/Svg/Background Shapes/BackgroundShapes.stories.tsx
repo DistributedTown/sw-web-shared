@@ -16,7 +16,7 @@ import {
 } from "../../..";
 
 export default {
-  title: "Components/BackgroundShapesSvg",
+  title: "SVGComponents/BackgroundShapesSvg",
   component: BackgroundShapesSvg,
   parameters: {
     layout: "fullscreen",

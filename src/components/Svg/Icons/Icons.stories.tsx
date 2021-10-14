@@ -11,7 +11,7 @@ import NetworkDesignSvg from "./NetworkDesignSvg";
 import TokenomicsSvg from "./TokenomicsSvg";
 
 export default {
-  title: "Components/SwIconsSvg",
+  title: "SVGComponents/SwIconsSvg",
   component: SwIconsSvg,
   parameters: {
     layout: "fullscreen",

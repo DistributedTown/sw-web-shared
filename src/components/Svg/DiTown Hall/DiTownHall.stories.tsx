@@ -10,7 +10,7 @@ import OpenGigsSvg from "./OpenGigsSvg";
 import OpenGigsSelSvg from "./OpenGigsSelSvg";
 
 export default {
-  title: "Components/DiTownHallSvg",
+  title: "SVGComponents/DiTownHallSvg",
   component: DiTownHallSvg,
   parameters: {
     layout: "fullscreen",

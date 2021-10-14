@@ -11,7 +11,7 @@ import DitoLogoCircleSvg from "./DitoLogoCircleSvg";
 import CenterWhiteBarSvg from "./CenterWhiteBarSvg";
 
 export default {
-  title: "Components/SwMainDesignSvg",
+  title: "SVGComponents/SwMainDesignSvg",
   component: SwMainDesignSvg,
   parameters: {
     layout: "fullscreen",

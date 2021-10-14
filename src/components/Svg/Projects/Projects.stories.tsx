@@ -11,7 +11,7 @@ import MilestonesSvg from "./MilestonesSvg";
 import MilestonesCompletedSvg from "./MilestonesCompletedSvg";
 
 export default {
-  title: "Components/ProjectsSvg",
+  title: "SVGComponents/ProjectsSvg",
   component: ProjectsSvg,
   parameters: {
     layout: "fullscreen",
