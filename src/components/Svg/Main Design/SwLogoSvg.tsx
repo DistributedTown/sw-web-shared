@@ -1,5 +1,5 @@
 import React from "react";
-import { SvgInputModel } from "./input.model";
+import { SvgInputModel } from "../input.model";
 
 const SwLogoSvg = (
   { height, width, className }: SvgInputModel = {
