@@ -5,3 +5,4 @@ export declare const JoinSel: any;
 export declare const DitoLogo: any;
 export declare const SwLogo: any;
 export declare const MainBackground: any;
+export declare const QRCode: any;
