@@ -4,6 +4,7 @@ import { default as MainBackgroundSvg } from "./components/Svg/Main Design/MainB
 import { default as JoinSelSvg } from "./components/Svg/Icons/JoinSelSvg";
 import { default as DitoLogoSvg } from "./components/Svg/Main Design/DitoLogoSvg";
 import { default as SwButton } from "./components/SwButton/SwButton";
+import { default as SwUploadFile } from "./components/SwUploadFile/SwUploadFile";
 import { default as QRCodeSvg } from "./components/Svg/Main Design/QRCodeSvg";
 import { default as JoinUnselSvg } from "./components/Svg/Icons/JoinUnselSvg";
 import { default as CreateUnselSvg } from "./components/Svg/Icons/CreateUnselSvg";
@@ -96,4 +97,5 @@ export {
   SwScrollbar,
   SwDivider,
   SwQuote,
+  SwUploadFile,
 };
