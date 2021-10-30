@@ -45,6 +45,7 @@ import { default as SwAnimated } from "./components/AnimatedRoute/SwAnimatedRout
 import { default as SwScrollbar } from "./components/SwScrollbar/SwScrollbar";
 import { default as SwDivider } from "./components/SwDivider/SwDivider";
 import { default as SwQuote } from "./components/SwQuote/SwQuote";
+import DitoCreditsSuccessSvg from "./components/Svg/Icons/DitoCreditsSuccessSvg";
 import { default as SwLogoSvg } from "./components/Svg/Main Design/SwLogoSvg";
 import { default as DitoLogoFullSvg } from "./components/Svg/Main Design/DitoLogoFullSvg";
 
@@ -59,6 +60,7 @@ export {
   QRCodeSvg,
   CreateUnselSvg,
   DitoCreditsSvg,
+  DitoCreditsSuccessSvg,
   GameTheorySvg,
   NetworkDesignSvg,
   TokenomicsSvg,
