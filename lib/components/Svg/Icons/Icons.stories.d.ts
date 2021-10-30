@@ -5,6 +5,7 @@ export declare const JoinSel: any;
 export declare const JoinUnsel: any;
 export declare const CreateUnsel: any;
 export declare const DitoCredits: any;
+export declare const DitoCreditsSuccess: any;
 export declare const GameTheory: any;
 export declare const NetworkDesign: any;
 export declare const Tokenomics: any;

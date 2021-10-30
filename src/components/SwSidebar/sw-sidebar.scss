@@ -1,10 +1,6 @@
 @import "../../styles/variables.scss";
 
 .sw-main-sidebar {
-  .MuiDrawer-paper {
-    // padding: 50px;
-  }
-
   .sw-sidebar-divider {
     margin: 40px 0;
     height: 2px;
@@ -28,14 +24,12 @@
     flex: 65%;
   }
 
-  .sw-sidebar-trigger {
-  }
-
   .MuiListItem-root {
     background-color: $foreground-color;
     border: 2px solid $border-color-base;
     height: 46px;
     cursor: pointer;
+    transition: $transition;
 
     .MuiListItemText-root {
       color: $link-color;
@@ -45,6 +39,10 @@
       margin-top: 20px;
     }
 
+    .sw-sidebar-menu-icon svg {
+      fill: $primary-color;
+    }
+
     &:hover,
     &.active-link {
       background-color: $primary-color;
@@ -52,6 +50,10 @@
 
       .MuiListItemText-root {
         color: $foreground-color;
+      }
+
+      .sw-sidebar-menu-icon svg {
+        fill: $foreground-color;
       }
     }
   }

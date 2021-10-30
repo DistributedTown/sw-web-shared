@@ -15,21 +15,8 @@ function FooterShareSvg(
       className={className}
       viewBox="0 0 32 32.003"
     >
-      <defs>
-        <linearGradient
-          id="linear-gradient"
-          x1="0.5"
-          x2="0.5"
-          y2="1"
-          gradientUnits="objectBoundingBox"
-        >
-          <stop offset="0" stopColor="#fff"></stop>
-          <stop offset="1" stopColor="#454545"></stop>
-        </linearGradient>
-      </defs>
       <g transform="translate(-8.243 155.5)">
         <path
-          fill="url(#linear-gradient)"
           d="M31.167 15.167a5.333 5.333 0 10-5.292-4.676L13.537 16.66a5.333 5.333 0 100 7.679l12.338 6.169a5.333 5.333 0 101.592-3.18l-12.338-6.169a5.387 5.387 0 000-1.316l12.338-6.169a5.307 5.307 0 003.7 1.493z"
           data-name="Path 1494"
           transform="translate(3.742 -160)"

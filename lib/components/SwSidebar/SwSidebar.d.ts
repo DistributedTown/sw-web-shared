@@ -27,7 +27,8 @@ export interface SwSidebarProps {
     width?: number;
     backgroundColor?: string;
     sidebarTop?: JSX.Element;
+    mobile?: boolean;
     variant?: "permanent" | "persistent" | "temporary";
 }
-declare const SwSidebar: ({ menuItems, open, width, backgroundColor, variant, sidebarTop, }: SwSidebarProps) => JSX.Element;
+declare const SwSidebar: ({ menuItems, open, width, backgroundColor, variant, sidebarTop, mobile }: SwSidebarProps) => JSX.Element;
 export default SwSidebar;

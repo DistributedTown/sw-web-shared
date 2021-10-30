@@ -15,20 +15,7 @@ function NotificationsSvg(
       className={className}
       viewBox="0 0 16 19.39"
     >
-      <defs>
-        <linearGradient
-          id="linear-gradient"
-          x1="0.5"
-          x2="0.5"
-          y2="1"
-          gradientUnits="objectBoundingBox"
-        >
-          <stop offset="0"></stop>
-          <stop offset="1" stopColor="#454545"></stop>
-        </linearGradient>
-      </defs>
       <g
-        fill="url(#linear-gradient)"
         data-name="Group 336"
         transform="translate(57)"
       >

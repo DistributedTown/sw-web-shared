@@ -8,8 +8,6 @@ export interface SwButtonProps extends ButtonProps {
   to?: string;
 }
 
-const darkenedColor50Percent = (color) => darken(color, 0.5);
-
 const CustomizedButton = styled(Button)(
   ({ theme }) => `
   width: 100%;
@@ -29,6 +27,10 @@ const CustomizedButton = styled(Button)(
   &.active-link {
     color: ${theme.palette.text.primary};
     background-color: ${theme.palette.primary.main};
+
+    .sw-btn-icon {
+      fill: ${theme.palette.text.primary};
+    }
   }
 `,
 );

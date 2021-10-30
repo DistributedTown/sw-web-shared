@@ -8,6 +8,9 @@ import ListItemText from "@mui/material/ListItemText";
 import "./sw-sidebar.scss";
 import { NavLink } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip/Tooltip";
+import { IconButton } from "@mui/material";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 interface SwSidebarMenuItemBase {
   color?: "primary" | "warn" | "secondary";
@@ -44,6 +47,7 @@ export interface SwSidebarProps {
   width?: number;
   backgroundColor?: string;
   sidebarTop?: JSX.Element;
+  mobile?: boolean;
   variant?: "permanent" | "persistent" | "temporary";
 }
 
@@ -54,7 +58,7 @@ const DrawerRef = (drawerWidth: number, backgroundColor: string) =>
     "& .MuiDrawer-paper": {
       position: "relative",
       whiteSpace: "nowrap",
-      padding: "50px",
+      padding: "0 50px",
       width: drawerWidth,
       borderRight: `4px solid ${theme.palette.text.primary}`,
       transition: theme.transitions.create("width", {
@@ -85,6 +89,13 @@ const DrawerRef = (drawerWidth: number, backgroundColor: string) =>
     },
   }));
 
+const DrawerFooter = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '48px'
+}));
+
 
 
 const SwSidebar = ({
@@ -94,11 +105,19 @@ const SwSidebar = ({
   backgroundColor = "transparent",
   variant = "permanent",
   sidebarTop = null,
+  mobile = false
 }: SwSidebarProps) => {
   const Drawer = DrawerRef(width, backgroundColor);
   const [opened, setOpened] = React.useState(open);
+
+  const handleToggle = () => {
+    setOpened(!opened);
+  }
+
   return (
-    <Drawer className="sw-main-sidebar" variant={variant} open={opened}>
+    <Drawer className="sw-main-sidebar" variant={variant} open={opened} ModalProps={{
+      keepMounted: true, // Better open performance on mobile.
+    }}>
       <div className="sw-sidebar-top">{sidebarTop}</div>
       <List className="sw-sidebar-menu">
         {menuItems.map((item, id) => {
@@ -141,6 +160,17 @@ const SwSidebar = ({
           );
         })}
       </List>
+      <DrawerFooter>
+        <Tooltip
+          title={!opened ? 'Open' : "Close"}
+          placement="right"
+        >
+          <IconButton color="secondary" onClick={handleToggle}>
+            {!opened ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+          </IconButton>
+        </Tooltip>
+
+      </DrawerFooter>
     </Drawer>
   );
 };
