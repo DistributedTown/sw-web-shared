@@ -1,2 +1,27 @@
-.sw-button {
+@import "../../styles/breakpoints.scss";
+
+.sw-divider {
+  @include media-breakpoint("lt-md") {
+    &.MuiDivider-vertical {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    &:not(.MuiDivider-vertical) {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+  @include media-breakpoint("lt-sm") {
+    &.MuiDivider-vertical {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    &:not(.MuiDivider-vertical) {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
 }

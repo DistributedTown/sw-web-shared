@@ -4,6 +4,7 @@ import { default as MainBackgroundSvg } from "./components/Svg/Main Design/MainB
 import { default as JoinSelSvg } from "./components/Svg/Icons/JoinSelSvg";
 import { default as DitoLogoSvg } from "./components/Svg/Main Design/DitoLogoSvg";
 import { default as SwButton } from "./components/SwButton/SwButton";
+import { default as SwUploadFile } from "./components/SwUploadFile/SwUploadFile";
 import { default as QRCodeSvg } from "./components/Svg/Main Design/QRCodeSvg";
 import { default as JoinUnselSvg } from "./components/Svg/Icons/JoinUnselSvg";
 import { default as CreateUnselSvg } from "./components/Svg/Icons/CreateUnselSvg";
@@ -44,4 +45,6 @@ import { default as SwAnimated } from "./components/AnimatedRoute/SwAnimatedRout
 import { default as SwScrollbar } from "./components/SwScrollbar/SwScrollbar";
 import { default as SwDivider } from "./components/SwDivider/SwDivider";
 import { default as SwQuote } from "./components/SwQuote/SwQuote";
-export { SwLayout, SwSidebar, MainBackgroundSvg, SwButton, JoinSelSvg, JoinUnselSvg, DitoLogoSvg, QRCodeSvg, CreateUnselSvg, DitoCreditsSvg, GameTheorySvg, NetworkDesignSvg, TokenomicsSvg, DitoLogoCircleSvg, CenterWhiteBarSvg, TreasurySvg, TreasurySelSvg, ProjectsSvg, ProjectsSelSvg, OpenGigsSvg, OpenGigsSelSvg, TownhallNavSvg, SkillWalletNavSvg, SettingsSvg, NotificationsSvg, LogoffSvg, FooterMembersSvg, FooterShareSvg, YourContributionsSvg, ProjectsCreatedSvg, ScoreReachedSvg, ParticipationRateSvg, MilestonesSvg, MilestonesCompletedSvg, LayerBlurSvg, Shape1Svg, Shape2Svg, Shape3Svg, Shape4Svg, Shape5Svg, Shape6Svg, Shape7Svg, SwAnimated, SwScrollbar, SwDivider, SwQuote, };
+import { default as SwLogoSvg } from "./components/Svg/Main Design/SwLogoSvg";
+import { default as DitoLogoFullSvg } from "./components/Svg/Main Design/DitoLogoFullSvg";
+export { SwLayout, SwSidebar, MainBackgroundSvg, SwButton, JoinSelSvg, JoinUnselSvg, DitoLogoSvg, QRCodeSvg, CreateUnselSvg, DitoCreditsSvg, GameTheorySvg, NetworkDesignSvg, TokenomicsSvg, DitoLogoCircleSvg, CenterWhiteBarSvg, TreasurySvg, TreasurySelSvg, ProjectsSvg, ProjectsSelSvg, OpenGigsSvg, OpenGigsSelSvg, TownhallNavSvg, SkillWalletNavSvg, SettingsSvg, NotificationsSvg, LogoffSvg, SwLogoSvg, DitoLogoFullSvg, FooterMembersSvg, FooterShareSvg, YourContributionsSvg, ProjectsCreatedSvg, ScoreReachedSvg, ParticipationRateSvg, MilestonesSvg, MilestonesCompletedSvg, LayerBlurSvg, Shape1Svg, Shape2Svg, Shape3Svg, Shape4Svg, Shape5Svg, Shape6Svg, Shape7Svg, SwAnimated, SwScrollbar, SwDivider, SwQuote, SwUploadFile, };
