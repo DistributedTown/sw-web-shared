@@ -68,13 +68,13 @@
     "typescript": "^4.1.2"
   },
   "peerDependencies": {
-    "@mui/icons-material": ">=5.0.1",
-    "@emotion/react": ">=11.4.1",
-    "@emotion/styled": ">=11.3.0",
-    "@mui/material": ">=5.0.2",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
-    "react-icons": ">=4.0.0",
-    "react-router-dom": ">=5.0.0"
+    "@mui/icons-material": ">=5.x",
+    "@emotion/react": ">=11.x",
+    "@emotion/styled": ">=11.x",
+    "@mui/material": ">=5.x",
+    "react": ">=16.x",
+    "react-dom": ">=16.x",
+    "react-icons": ">=4.x",
+    "react-router-dom": ">=5.x"
   }
 }

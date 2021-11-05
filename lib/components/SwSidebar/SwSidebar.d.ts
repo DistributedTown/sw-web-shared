@@ -26,9 +26,9 @@ export interface SwSidebarProps {
     open?: boolean;
     width?: number;
     backgroundColor?: string;
-    sidebarTop?: JSX.Element;
+    sidebarTopIcon?: React.ElementType;
     mobile?: boolean;
-    variant?: "permanent" | "persistent" | "temporary";
+    handleToggle: () => any;
 }
-declare const SwSidebar: ({ menuItems, open, width, backgroundColor, variant, sidebarTop, mobile }: SwSidebarProps) => JSX.Element;
+declare const SwSidebar: ({ menuItems, open, width, backgroundColor, sidebarTopIcon, mobile, handleToggle }: SwSidebarProps) => JSX.Element;
 export default SwSidebar;

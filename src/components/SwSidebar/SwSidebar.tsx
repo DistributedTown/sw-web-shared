@@ -1,6 +1,5 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
@@ -8,9 +7,10 @@ import ListItemText from "@mui/material/ListItemText";
 import "./sw-sidebar.scss";
 import { NavLink } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip/Tooltip";
-import { IconButton } from "@mui/material";
+import { createTheme, Drawer, IconButton, SvgIcon } from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import CloseIcon from '@mui/icons-material/Close';
 
 interface SwSidebarMenuItemBase {
   color?: "primary" | "warn" | "secondary";
@@ -46,48 +46,10 @@ export interface SwSidebarProps {
   open?: boolean;
   width?: number;
   backgroundColor?: string;
-  sidebarTop?: JSX.Element;
+  sidebarTopIcon?: React.ElementType;
   mobile?: boolean;
-  variant?: "permanent" | "persistent" | "temporary";
+  handleToggle: () => any
 }
-
-const DrawerRef = (drawerWidth: number, backgroundColor: string) =>
-  styled(MuiDrawer, {
-    shouldForwardProp: (prop) => prop !== "open",
-  })(({ theme, open }) => ({
-    "& .MuiDrawer-paper": {
-      position: "relative",
-      whiteSpace: "nowrap",
-      padding: "0 50px",
-      width: drawerWidth,
-      borderRight: `4px solid ${theme.palette.text.primary}`,
-      transition: theme.transitions.create("width", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      backgroundColor,
-      boxSizing: "border-box",
-      ...(!open && {
-        overflowX: "hidden",
-        transition: theme.transitions.create("width", {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen,
-        }),
-        padding: "10px",
-        width: theme.spacing(7),
-        [theme.breakpoints.up("sm")]: {
-          width: theme.spacing(9),
-        },
-        ".MuiList-root .MuiListItem-root": {
-          padding: 0,
-          ".MuiListItemText-root": {
-            display: "none",
-          },
-        },
-      }),
-      "& > .MuiList-root .MuiListItem-root": {},
-    },
-  }));
 
 const DrawerFooter = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -96,29 +58,89 @@ const DrawerFooter = styled('div')(({ theme }) => ({
   height: '48px'
 }));
 
-
-
 const SwSidebar = ({
   menuItems = [],
   open = false,
   width = 300,
   backgroundColor = "transparent",
-  variant = "permanent",
-  sidebarTop = null,
-  mobile = false
+  sidebarTopIcon = null,
+  mobile = false,
+  handleToggle = () => null
 }: SwSidebarProps) => {
-  const Drawer = DrawerRef(width, backgroundColor);
-  const [opened, setOpened] = React.useState(open);
-
-  const handleToggle = () => {
-    setOpened(!opened);
-  }
+  const theme = createTheme();
 
   return (
-    <Drawer className="sw-main-sidebar" variant={variant} open={opened} ModalProps={{
-      keepMounted: true, // Better open performance on mobile.
-    }}>
-      <div className="sw-sidebar-top">{sidebarTop}</div>
+    <Drawer
+      anchor="left"
+      sx={{
+        width: !mobile ? width : '100%',
+        transition: theme.transitions.create("width", {
+          easing: theme.transitions.easing.sharp,
+          duration: theme.transitions.duration.leavingScreen,
+        }),
+        ...(!open && !mobile && {
+          transition: theme.transitions.create("width", {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+          }),
+          [theme.breakpoints.up("sm")]: {
+            width: theme.spacing(12),
+          }
+        }),
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
+          transition: theme.transitions.create("width", {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+          }),
+          paddingX: '50px',
+          overflowX: "hidden",
+          backgroundColor: !mobile ? backgroundColor : 'black',
+          width: !mobile ? width : '100%',
+          boxSizing: 'border-box',
+          ...(!open && !mobile && {
+            padding: 0,
+            overflowX: "hidden",
+            transition: theme.transitions.create("width", {
+              easing: theme.transitions.easing.sharp,
+              duration: theme.transitions.duration.leavingScreen,
+            }),
+            [theme.breakpoints.up("sm")]: {
+              width: theme.spacing(12),
+            },
+            ".MuiList-root": {
+              width: '50px',
+              transition: theme.transitions.create("width", {
+                easing: theme.transitions.easing.sharp,
+                duration: theme.transitions.duration.leavingScreen,
+              }),
+              ".MuiListItem-root": {
+                padding: 0,
+                ".MuiListItemText-root": {
+                  display: "none",
+                },
+              },
+            }
+          }),
+        },
+      }}
+      className={`sw-main-sidebar ${mobile ? 'is-mobile' : ''}`}
+      variant={mobile ? 'temporary' : 'permanent'}
+      open={open}>
+      {
+        mobile && (<Tooltip
+          title="Close sidebar"
+          placement="right"
+          color="white"
+        >
+          <IconButton className="sw-sidebar-close-button" color="secondary" onClick={handleToggle}>
+            <CloseIcon />
+          </IconButton>
+        </Tooltip>)
+      }
+      <div className="sw-sidebar-top">{
+        <SvgIcon component={sidebarTopIcon} width={mobile || !open ? '60' : '100'} height={mobile ? '60' : '100'} />
+      }</div>
       <List className="sw-sidebar-menu">
         {menuItems.map((item, id) => {
           if (item.type === "divider") {
@@ -129,11 +151,11 @@ const SwSidebar = ({
             return (
               <Tooltip
                 key={id}
-                title={!opened ? item.label : ""}
+                title={!open ? item.label : ""}
                 placement="right"
               >
                 <ListItem
-                  exact={true}
+                  onClick={mobile ? handleToggle : () => null}
                   activeClassName="active-link"
                   component={NavLink}
                   to={item.href}
@@ -149,7 +171,7 @@ const SwSidebar = ({
           return (
             <Tooltip
               key={id}
-              title={!opened ? item.label : ""}
+              title={!open ? item.label : ""}
               placement="right"
             >
               <ListItem onClick={item.onClick} key={id}>
@@ -160,17 +182,17 @@ const SwSidebar = ({
           );
         })}
       </List>
-      <DrawerFooter>
+      {!mobile && <DrawerFooter>
         <Tooltip
-          title={!opened ? 'Open' : "Close"}
+          title={!open ? 'Open' : "Close"}
           placement="right"
         >
           <IconButton color="secondary" onClick={handleToggle}>
-            {!opened ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {!open ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </Tooltip>
 
-      </DrawerFooter>
+      </DrawerFooter>}
     </Drawer>
   );
 };

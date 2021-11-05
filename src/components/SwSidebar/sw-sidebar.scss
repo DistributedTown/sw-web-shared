@@ -1,10 +1,21 @@
 @import "../../styles/variables.scss";
+@import "../../styles/breakpoints.scss";
 
 .sw-main-sidebar {
   .sw-sidebar-divider {
     margin: 40px 0;
     height: 2px;
     background-color: $foreground-color;
+  }
+
+  .sw-sidebar-close-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+
+  &:not(.is-mobile) .MuiDrawer-paper {
+    border-right: 4px solid $foreground-color;
   }
 
   .sw-sidebar-menu-icon {
@@ -24,6 +35,13 @@
     flex: 65%;
   }
 
+  &.MuiDrawer-docked {
+    .MuiPaper-root {
+      display: flex;
+      align-items: center;
+    }
+  }
+
   .MuiListItem-root {
     background-color: $foreground-color;
     border: 2px solid $border-color-base;
@@ -33,10 +51,11 @@
 
     .MuiListItemText-root {
       color: $link-color;
+      white-space: nowrap !important;
     }
 
     + .MuiListItem-root {
-      margin-top: 20px;
+      margin-top: 25px;
     }
 
     .sw-sidebar-menu-icon svg {
@@ -55,6 +74,12 @@
       .sw-sidebar-menu-icon svg {
         fill: $foreground-color;
       }
+    }
+  }
+
+  @include media-breakpoint("lt-sm") {
+    .sw-sidebar-top {
+      flex: 10%;
     }
   }
 }
