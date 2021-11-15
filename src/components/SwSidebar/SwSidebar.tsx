@@ -159,6 +159,7 @@ const SwSidebar = ({
                   activeClassName="active-link"
                   component={NavLink}
                   to={item.href}
+                  replace
                   key={id}
                 >
                   <div className="sw-sidebar-menu-icon">{item.icon}</div>

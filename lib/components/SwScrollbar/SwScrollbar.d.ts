@@ -1,4 +1,6 @@
 /// <reference types="react" />
+import "simplebar/src/simplebar.css";
+import "./sw-scrollbar.scss";
 export interface SwScrollbarProps {
     className?: string;
     sx?: any;

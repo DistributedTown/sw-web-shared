@@ -7,7 +7,7 @@ import SwScrollbar from "../SwScrollbar/SwScrollbar";
 
 export interface SwLayoutProps {
   backgroundUrl?: any;
-  contentBackgroundColor?: string;
+  hideTop?: boolean;
   children?: JSX.Element;
   drawer?: JSX.Element;
   className?: string;
@@ -18,14 +18,14 @@ const CustomizedLayout = styled(Box)(
   ({ theme }) => `
   .MuiContainer-root:not(.sw-layout-top) {
     position: relative;
-    height: calc(100% - 64px);
+    height: 100%;
   }
 `
 );
 
 const SwLayout = ({
   backgroundUrl = null,
-  contentBackgroundColor = null,
+  hideTop = false,
   children = null,
   drawer = null,
   top = null,
@@ -64,21 +64,14 @@ const SwLayout = ({
             overflow: "hidden",
           }}
         >
-          <Container className="sw-layout-top" maxWidth="xl">
+          <Container className="sw-layout-top" maxWidth="xl" sx={{display: hideTop ? 'none' : 'flex'}}>
             {top}
           </Container>
-          <SwScrollbar
-            sx={{
-              height: "calc(100% - 50px)",
-            }}
-          >
-            <Container
-              maxWidth="xl"
-              sx={{
-                mt: 4,
-                mb: 4,
-              }}
-            >
+
+          <SwScrollbar sx={{
+            height: hideTop ? `100%` : `calc(100% - 50px)`
+          }}>
+            <Container maxWidth="xl">
               {children}
             </Container>
           </SwScrollbar>
