@@ -74,6 +74,7 @@ import { default as TeachingSvg } from "./components/Svg/Categories/TeachingSvg"
 import { default as TokenomicsSvg2 } from "./components/Svg/Categories/TokenomicsSvg";
 import { default as TrainSportSvg } from "./components/Svg/Categories/TrainSportSvg";
 import { default as VideoSvg } from "./components/Svg/Categories/VideoSvg";
+import { default as SwProgressBar } from "./components/SwProgressBar/SwLinearProgressBar";
 
 export {
   SwLayout,
@@ -84,6 +85,7 @@ export {
   SwDivider,
   SwQuote,
   SwUploadFile,
+  SwProgressBar,
   // icon exports
   JoinSelSvg,
   JoinUnselSvg,
@@ -149,5 +151,5 @@ export {
   TeachingSvg,
   TokenomicsSvg,
   TrainSportSvg,
-  VideoSvg
+  VideoSvg,
 };
