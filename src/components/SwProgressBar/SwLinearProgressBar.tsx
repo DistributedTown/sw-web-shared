@@ -7,12 +7,12 @@ import {
 import React from "react";
 import "./sw-progress-bar.scss";
 
-export interface NoBorderLinearProgressProps {
+export interface ProgressBarProps {
   className?: string;
-  percentage: any;
+  percentage?: any;
   sx?: any;
   variant?: any;
-  value?: any;
+  children: any;
 }
 
 const NoBorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -33,7 +33,7 @@ const SwProgressBar = ({
   className = "",
   variant = "determined",
   ...rest
-}: NoBorderLinearProgressProps) => {
+}: ProgressBarProps) => {
   return (
     <div className="sw-progress-bar">
       <NoBorderLinearProgress variant={variant} value={percentage} />
