@@ -1,20 +1,7 @@
 import * as React from "react";
-import { Scrollbars } from "react-custom-scrollbars";
-
-const renderThumb = ({ style, ...props }) => {
-  const thumbStyle = {
-    backgroundColor: `white`,
-  };
-  return <div style={{ ...style, ...thumbStyle }} {...props} />;
-};
-
-const renderView = ({ style, ...props }) => {
-  const viewStyle = {
-    paddingLeft: 12,
-    paddingRight: 12,
-  };
-  return <div className="box" style={{ ...style, ...viewStyle }} {...props} />;
-};
+import SimpleBarReact from "simplebar-react";
+import "simplebar/src/simplebar.css";
+import "./sw-scrollbar.scss";
 
 export interface SwScrollbarProps {
   className?: string;
@@ -28,14 +15,14 @@ const SwScrollbar = ({
   ...rest
 }: SwScrollbarProps) => {
   return (
-    <Scrollbars
-      autoHeightMin="100%"
-      autoHeightMax="100%"
+    <SimpleBarReact
+      forceVisible="y"
       className={className}
-      renderView={renderView}
-      renderThumbHorizontal={renderThumb}
-      renderThumbVertical={renderThumb}
-      style={{  height: '100%', ...(sx || {}) }}
+      style={{ 
+        height: '100%', 
+        width: '100%', 
+        ...(sx || {}) 
+      }}
       {...rest}
     />
   );
