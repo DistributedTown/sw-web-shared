@@ -10,8 +10,13 @@
     transition: $transition;
     backface-visibility: hidden;
     border: 3px solid $border-color-base;
-    border-radius: 50%;
+    border-radius: 0;
+    background: $foreground-color;
     box-sizing: border-box;
+  }
+
+  .MuiSvgIcon-root {
+    fill: $primary-color;
   }
 
   .sw-upload-action {
@@ -26,6 +31,10 @@
     justify-content: center;
     transition: $transition;
 
+    .MuiAvatar-fallback {
+      fill: $primary-color;
+    }
+
     .MuiSvgIcon-root {
       width: 1.5em;
       height: 1.5em;
@@ -35,14 +44,13 @@
       }
 
       &.upload {
-        color: $primary-color;
+        fill: $foreground-color;
       }
     }
   }
 
   &:hover .MuiAvatar-root {
     opacity: 0.3;
-    border-width: 4px;
     border-color: $foreground-color;
   }
 

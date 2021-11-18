@@ -35,7 +35,7 @@ const SwQuote = ({
             aria-haspopup="true"
             onMouseEnter={handlePopoverOpen}
             onMouseLeave={handlePopoverClose}
-            color="text.primary"
+            color="info"
             component="div"
             variant="subtitle1"
           >
@@ -72,7 +72,7 @@ const SwQuote = ({
 const Quote = ({ children }: { children: JSX.Element }) => {
   return (
     <div className="quote">
-      <Typography color="text.primary" component="div" variant="subtitle1">
+      <Typography color="info" component="div" variant="subtitle1">
         {children}
       </Typography>
     </div>

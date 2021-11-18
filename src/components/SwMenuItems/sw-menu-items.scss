@@ -14,10 +14,6 @@
     top: 5px;
   }
 
-  .sw-sidebar-content {
-    flex: 65%;
-  }
-
   &:not(.is-mobile) .MuiDrawer-paper {
     border-right: 4px solid $foreground-color;
   }

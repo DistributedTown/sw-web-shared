@@ -8,10 +8,12 @@ import SwScrollbar from "../SwScrollbar/SwScrollbar";
 export interface SwLayoutProps {
   backgroundUrl?: any;
   hideTop?: boolean;
+  scrollbarStyles: any;
   children?: JSX.Element;
   drawer?: JSX.Element;
   className?: string;
   top?: JSX.Element;
+  disableGutters?: boolean;
 }
 
 const CustomizedLayout = styled(Box)(
@@ -29,11 +31,13 @@ const SwLayout = ({
   children = null,
   drawer = null,
   top = null,
+  scrollbarStyles = {},
+  disableGutters = false,
   className = "",
 }: SwLayoutProps) => {
   return (
     <>
-      <div
+      {backgroundUrl && <div
         className={`sw-background ${className}`}
         style={{
           display: "flex",
@@ -48,7 +52,7 @@ const SwLayout = ({
           left: 0,
           zIndex: -1,
         }}
-      ></div>
+      ></div>}
       <CustomizedLayout
         sx={{
           display: "flex",
@@ -64,17 +68,22 @@ const SwLayout = ({
             overflow: "hidden",
           }}
         >
-          <Container className="sw-layout-top" maxWidth="xl" sx={{display: hideTop ? 'none' : 'flex'}}>
+          <Container className="sw-layout-top" maxWidth="xl" sx={{ display: hideTop ? 'none' : 'flex' }}>
             {top}
           </Container>
 
+
           <SwScrollbar sx={{
-            height: hideTop ? `100%` : `calc(100% - 50px)`
+            height: '100%',
+            ...(scrollbarStyles || {})
           }}>
-            <Container maxWidth="xl">
+
+            <Container maxWidth="xl" disableGutters={disableGutters}>
               {children}
             </Container>
           </SwScrollbar>
+
+
         </Box>
       </CustomizedLayout>
     </>

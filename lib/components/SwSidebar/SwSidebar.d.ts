@@ -22,13 +22,16 @@ interface SwSidebarMenuItemHref extends SwSidebarMenuItemBase {
 }
 export declare type SwSidebarMenuItem = SwSidebarMenuItemButton | SwSidebarMenuDivider | SwSidebarMenuItemHref;
 export interface SwSidebarProps {
-    menuItems: Partial<SwSidebarMenuItem>[];
     open?: boolean;
-    width?: number;
+    width?: string;
     backgroundColor?: string;
+    mode: 'dock' | 'close';
     sidebarTopIcon?: React.ElementType;
+    children: JSX.Element;
     mobile?: boolean;
     handleToggle: () => any;
+    sx?: any;
+    preventClose?: boolean;
 }
-declare const SwSidebar: ({ menuItems, open, width, backgroundColor, sidebarTopIcon, mobile, handleToggle }: SwSidebarProps) => JSX.Element;
+declare const SwSidebar: ({ open, width, mode, preventClose, backgroundColor, sidebarTopIcon, mobile, handleToggle, children, sx }: SwSidebarProps) => JSX.Element;
 export default SwSidebar;

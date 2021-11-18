@@ -1,11 +1,6 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
 import "./sw-sidebar.scss";
-import { NavLink } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip/Tooltip";
 import { createTheme, Drawer, IconButton, SvgIcon } from "@mui/material";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -42,13 +37,16 @@ export type SwSidebarMenuItem =
   | SwSidebarMenuItemHref;
 
 export interface SwSidebarProps {
-  menuItems: Partial<SwSidebarMenuItem>[];
   open?: boolean;
-  width?: number;
+  width?: string;
   backgroundColor?: string;
+  mode: 'dock' | 'close';
   sidebarTopIcon?: React.ElementType;
+  children: JSX.Element,
   mobile?: boolean;
-  handleToggle: () => any
+  handleToggle: () => any,
+  sx?: any,
+  preventClose?: boolean;
 }
 
 const DrawerFooter = styled('div')(({ theme }) => ({
@@ -59,13 +57,16 @@ const DrawerFooter = styled('div')(({ theme }) => ({
 }));
 
 const SwSidebar = ({
-  menuItems = [],
   open = false,
-  width = 300,
+  width = '300px',
+  mode = 'dock',
+  preventClose = false,
   backgroundColor = "transparent",
   sidebarTopIcon = null,
   mobile = false,
-  handleToggle = () => null
+  handleToggle = () => null,
+  children,
+  sx = {}
 }: SwSidebarProps) => {
   const theme = createTheme();
 
@@ -106,7 +107,7 @@ const SwSidebar = ({
               duration: theme.transitions.duration.leavingScreen,
             }),
             [theme.breakpoints.up("sm")]: {
-              width: theme.spacing(12),
+              width: mode === 'dock' ? theme.spacing(12) : 0,
             },
             ".MuiList-root": {
               width: '50px',
@@ -122,6 +123,7 @@ const SwSidebar = ({
               },
             }
           }),
+          ...(sx || {})
         },
       }}
       className={`sw-main-sidebar ${mobile ? 'is-mobile' : ''}`}
@@ -133,7 +135,7 @@ const SwSidebar = ({
           placement="right"
           color="white"
         >
-          <IconButton className="sw-sidebar-close-button" color="secondary" onClick={handleToggle}>
+          <IconButton className="sw-sidebar-close-button" color="info" onClick={handleToggle}>
             <CloseIcon />
           </IconButton>
         </Tooltip>)
@@ -141,54 +143,15 @@ const SwSidebar = ({
       <div className="sw-sidebar-top">{
         <SvgIcon component={sidebarTopIcon} width={mobile || !open ? '60' : '100'} height={mobile ? '60' : '100'} />
       }</div>
-      <List className="sw-sidebar-menu">
-        {menuItems.map((item, id) => {
-          if (item.type === "divider") {
-            return <Divider key={id} className="sw-sidebar-divider" />;
-          }
-
-          if (item.type === "href") {
-            return (
-              <Tooltip
-                key={id}
-                title={!open ? item.label : ""}
-                placement="right"
-              >
-                <ListItem
-                  onClick={mobile ? handleToggle : () => null}
-                  activeClassName="active-link"
-                  component={NavLink}
-                  to={item.href}
-                  replace
-                  key={id}
-                >
-                  <div className="sw-sidebar-menu-icon">{item.icon}</div>
-                  <ListItemText primary={item.label} />
-                </ListItem>
-              </Tooltip>
-            );
-          }
-
-          return (
-            <Tooltip
-              key={id}
-              title={!open ? item.label : ""}
-              placement="right"
-            >
-              <ListItem onClick={item.onClick} key={id}>
-                <div className="sw-sidebar-menu-icon">{item.icon}</div>
-                <ListItemText primary={item.label} />
-              </ListItem>
-            </Tooltip>
-          );
-        })}
-      </List>
-      {!mobile && <DrawerFooter>
+      <div className={`sw-sidebar-content`}>
+       {children}
+      </div>
+      {(!mobile && !preventClose) && <DrawerFooter>
         <Tooltip
           title={!open ? 'Open' : "Close"}
           placement="right"
         >
-          <IconButton color="secondary" onClick={handleToggle}>
+          <IconButton color="info" onClick={handleToggle}>
             {!open ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </Tooltip>

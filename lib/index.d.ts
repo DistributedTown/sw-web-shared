@@ -1,5 +1,6 @@
 import { default as SwLayout } from "./components/SwLayout/SwLayout";
 import { default as SwSidebar } from "./components/SwSidebar/SwSidebar";
+import { default as SwMenuItems } from "./components/SwMenuItems/SwMenuItems";
 import { default as JoinSelSvg } from "./components/Svg/Icons/JoinSelSvg";
 import { default as DitoLogoSvg } from "./components/Svg/Main Design/DitoLogoSvg";
 import { default as SwButton } from "./components/SwButton/SwButton";
@@ -8,6 +9,7 @@ import { default as SwAnimated } from "./components/AnimatedRoute/SwAnimatedRout
 import { default as SwScrollbar } from "./components/SwScrollbar/SwScrollbar";
 import { default as SwDivider } from "./components/SwDivider/SwDivider";
 import { default as SwQuote } from "./components/SwQuote/SwQuote";
+import { default as SwSlider } from "./components/SwSlider/SwSlider";
 import { default as QRCodeSvg } from "./components/Svg/Main Design/QRCodeSvg";
 import { default as JoinUnselSvg } from "./components/Svg/Icons/JoinUnselSvg";
 import { default as CreateUnselSvg } from "./components/Svg/Icons/CreateUnselSvg";
@@ -72,4 +74,4 @@ import { default as TokenomicsSvg2 } from "./components/Svg/Categories/Tokenomic
 import { default as TrainSportSvg } from "./components/Svg/Categories/TrainSportSvg";
 import { default as VideoSvg } from "./components/Svg/Categories/VideoSvg";
 import { default as SwProgressBar } from "./components/SwProgressBar/SwLinearProgressBar";
-export { SwLayout, SwSidebar, SwButton, SwAnimated, SwScrollbar, SwDivider, SwQuote, SwUploadFile, SwProgressBar, JoinSelSvg, JoinUnselSvg, DitoLogoSvg, QRCodeSvg, CreateUnselSvg, DitoCreditsSvg, DitoCreditsSuccessSvg, GameTheorySvg, GameTheorySvg2, NetworkDesignSvg, TokenomicsSvg2, DitoLogoCircleSvg, CenterWhiteBarSvg, TreasurySvg, TreasurySelSvg, ProjectsSvg, ProjectsSelSvg, OpenGigsSvg, OpenGigsSelSvg, TownhallNavSvg, SkillWalletNavSvg, SettingsSvg, NotificationsSvg, LogoffSvg, SwLogoSvg, DitoLogoFullSvg, FooterMembersSvg, FooterShareSvg, YourContributionsSvg, ProjectsCreatedSvg, ScoreReachedSvg, ParticipationRateSvg, MilestonesSvg, MilestonesCompletedSvg, LayerBlurSvg, Shape1Svg, Shape2Svg, Shape3Svg, Shape4Svg, Shape5Svg, Shape6Svg, Shape7Svg, MainBackgroundSvg, ArchitectureSvg, BackendSvg, BlockchainSvg, CommunitySvg, ConsensusSvg, DefiSvg, FrontendSvg, GardeningSvg, GovernanceSvg, HouseHoldingSvg, LegalSvg, ManagementSvg, MobileSvg, WebDevSvg, NetworkSvg, PaintingSvg, PhotographySvg, SmartContractsSvg, TeachingSvg, TokenomicsSvg, TrainSportSvg, VideoSvg, };
+export { SwLayout, SwSidebar, SwMenuItems, SwButton, SwAnimated, SwScrollbar, SwDivider, SwQuote, SwUploadFile, SwProgressBar, SwSlider, JoinSelSvg, JoinUnselSvg, DitoLogoSvg, QRCodeSvg, CreateUnselSvg, DitoCreditsSvg, DitoCreditsSuccessSvg, GameTheorySvg, GameTheorySvg2, NetworkDesignSvg, TokenomicsSvg2, DitoLogoCircleSvg, CenterWhiteBarSvg, TreasurySvg, TreasurySelSvg, ProjectsSvg, ProjectsSelSvg, OpenGigsSvg, OpenGigsSelSvg, TownhallNavSvg, SkillWalletNavSvg, SettingsSvg, NotificationsSvg, LogoffSvg, SwLogoSvg, DitoLogoFullSvg, FooterMembersSvg, FooterShareSvg, YourContributionsSvg, ProjectsCreatedSvg, ScoreReachedSvg, ParticipationRateSvg, MilestonesSvg, MilestonesCompletedSvg, LayerBlurSvg, Shape1Svg, Shape2Svg, Shape3Svg, Shape4Svg, Shape5Svg, Shape6Svg, Shape7Svg, MainBackgroundSvg, ArchitectureSvg, BackendSvg, BlockchainSvg, CommunitySvg, ConsensusSvg, DefiSvg, FrontendSvg, GardeningSvg, GovernanceSvg, HouseHoldingSvg, LegalSvg, ManagementSvg, MobileSvg, WebDevSvg, NetworkSvg, PaintingSvg, PhotographySvg, SmartContractsSvg, TeachingSvg, TokenomicsSvg, TrainSportSvg, VideoSvg, };

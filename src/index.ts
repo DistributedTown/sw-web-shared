@@ -1,5 +1,6 @@
 import { default as SwLayout } from "./components/SwLayout/SwLayout";
 import { default as SwSidebar } from "./components/SwSidebar/SwSidebar";
+import { default as SwMenuItems } from "./components/SwMenuItems/SwMenuItems";
 import { default as JoinSelSvg } from "./components/Svg/Icons/JoinSelSvg";
 import { default as DitoLogoSvg } from "./components/Svg/Main Design/DitoLogoSvg";
 import { default as SwButton } from "./components/SwButton/SwButton";
@@ -8,6 +9,9 @@ import { default as SwAnimated } from "./components/AnimatedRoute/SwAnimatedRout
 import { default as SwScrollbar } from "./components/SwScrollbar/SwScrollbar";
 import { default as SwDivider } from "./components/SwDivider/SwDivider";
 import { default as SwQuote } from "./components/SwQuote/SwQuote";
+import { default as SwSlider } from "./components/SwSlider/SwSlider";
+
+
 
 // icon imports
 import { default as QRCodeSvg } from "./components/Svg/Main Design/QRCodeSvg";
@@ -79,6 +83,7 @@ import { default as SwProgressBar } from "./components/SwProgressBar/SwLinearPro
 export {
   SwLayout,
   SwSidebar,
+  SwMenuItems,
   SwButton,
   SwAnimated,
   SwScrollbar,
@@ -86,6 +91,7 @@ export {
   SwQuote,
   SwUploadFile,
   SwProgressBar,
+  SwSlider,
   // icon exports
   JoinSelSvg,
   JoinUnselSvg,
