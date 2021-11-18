@@ -16,7 +16,7 @@ export interface ProgressBarProps {
 }
 
 const NoBorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: "15px",
+  height: "20px",
   borderRadius: 0,
   border: `1px solid ${theme.palette.background.paper}`,
   [`&.${linearProgressClasses.colorPrimary}`]: {
@@ -31,15 +31,23 @@ const NoBorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 const SwProgressBar = ({
   percentage,
   className = "",
-  variant = "determined",
+  variant = "determinate",
   ...rest
 }: ProgressBarProps) => {
   return (
     <div className="sw-progress-bar">
-      <NoBorderLinearProgress variant={variant} value={percentage} />
+      <NoBorderLinearProgress {...rest} variant={variant} value={percentage} />
       <Typography
         className="sw-progress-bar-label"
-        sx={{ color: "secondary.main", textAlign: "center" }}
+        sx={{
+          color:
+            +percentage < 45
+              ? "primary.main"
+              : +percentage >= 45 && +percentage <= 55
+              ? "text.secondary"
+              : "background.paper",
+          textAlign: "center",
+        }}
         component="span"
         variant="body2"
       >
