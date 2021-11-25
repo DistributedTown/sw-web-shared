@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Slider, SliderProps, SliderThumb, styled } from "@mui/material";
+import { Slider, SliderProps, SliderThumb, styled, Typography } from "@mui/material";
 import "./sw-slider.scss";
 
 export interface SwSliderProps extends SliderProps {
@@ -26,7 +26,13 @@ const SwThumbComponent = (value: number) => {
     return (
       <SliderThumb {...other}>
         {children}
-        <span className="sw-thumb-value">{value || 0}</span>
+        <Typography
+          className="sw-thumb-value"
+          component="span"
+          variant="subtitle2"
+        >
+          {value || 0}
+        </Typography>
       </SliderThumb>
     );
   }

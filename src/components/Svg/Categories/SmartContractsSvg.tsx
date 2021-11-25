@@ -18,7 +18,6 @@ function SmartContractsSvg(
   >
     <g transform="translate(1.125 1.125)">
       <path
-        fill="none"
         stroke="#000"
         strokeLinejoin="round"
         strokeWidth="2.25"
@@ -26,7 +25,6 @@ function SmartContractsSvg(
         data-name="Path 1479"
       ></path>
       <path
-        fill="none"
         stroke="#000"
         strokeLinejoin="round"
         strokeWidth="2.25"
@@ -34,7 +32,6 @@ function SmartContractsSvg(
         data-name="Path 1480"
       ></path>
       <path
-        fill="none"
         stroke="#000"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -43,7 +40,6 @@ function SmartContractsSvg(
         data-name="Path 1481"
       ></path>
       <path
-        fill="none"
         stroke="#000"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -52,7 +48,6 @@ function SmartContractsSvg(
         data-name="Path 1482"
       ></path>
       <path
-        fill="none"
         stroke="#000"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -61,7 +56,6 @@ function SmartContractsSvg(
         data-name="Path 1483"
       ></path>
       <path
-        fill="none"
         stroke="#000"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -70,7 +64,6 @@ function SmartContractsSvg(
         data-name="Path 1484"
       ></path>
       <path
-        fill="none"
         stroke="#000"
         strokeLinecap="round"
         strokeLinejoin="round"

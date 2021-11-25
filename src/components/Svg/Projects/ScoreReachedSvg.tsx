@@ -15,22 +15,9 @@ function ScoreReachedSvg(
       className={className}
       viewBox="0 0 13.278 16.73"
     >
-      <defs>
-        <linearGradient
-          id="linear-gradient"
-          x1="0.5"
-          x2="0.5"
-          y2="1"
-          gradientUnits="objectBoundingBox"
-        >
-          <stop offset="0"></stop>
-          <stop offset="1" stopColor="#545454"></stop>
-        </linearGradient>
-      </defs>
       <g
         transform="translate(-.001)"
         style={{ isolation: "isolate" }}
-        fill="url(#linear-gradient)"
       >
         <path
           d="M4.078 7.03a2.39 2.39 0 10-2.39-2.39 2.39 2.39 0 002.39 2.39zm0-3.585A1.195 1.195 0 112.883 4.64a1.195 1.195 0 011.195-1.195z"

@@ -15,19 +15,7 @@ function ParticipationRateSvg(
       className={className}
       viewBox="0 0 23 23"
     >
-      <defs>
-        <linearGradient
-          id="linear-gradient"
-          x1="0.5"
-          x2="0.5"
-          y2="1"
-          gradientUnits="objectBoundingBox"
-        >
-          <stop offset="0"></stop>
-          <stop offset="1" stopColor="gray"></stop>
-        </linearGradient>
-      </defs>
-      <g fill="url(#linear-gradient)" transform="translate(-2.25 -2.25)">
+      <g transform="translate(-2.25 -2.25)">
         <path
           d="M3.893 22.5v1.643H7.66l-5.41 5.41 1.162 1.162 5.41-5.41v3.767h1.643V22.5z"
           data-name="Path 1580"

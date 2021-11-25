@@ -15,20 +15,7 @@ function DitoCreditsSuccessSvg(
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 60.286 41.332"
     >
-      <defs>
-        <linearGradient
-          id="linear-gradient"
-          x1="0.5"
-          x2="0.5"
-          y2="1"
-          gradientUnits="objectBoundingBox"
-        >
-          <stop offset="0" stopColor="#fff"></stop>
-          <stop offset="1" stopColor="gray"></stop>
-        </linearGradient>
-      </defs>
       <g
-        fill="url(#linear-gradient)"
         stroke="#fff"
         strokeWidth="1"
         data-name="Group 17"

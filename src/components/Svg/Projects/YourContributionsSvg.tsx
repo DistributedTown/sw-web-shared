@@ -15,20 +15,7 @@ function YourContributionsSvg(
       className={className}
       viewBox="0 0 32.545 30.438"
     >
-      <defs>
-        <linearGradient
-          id="linear-gradient"
-          x1="0.5"
-          x2="0.5"
-          y2="1"
-          gradientUnits="objectBoundingBox"
-        >
-          <stop offset="0"></stop>
-          <stop offset="1" stopColor="gray"></stop>
-        </linearGradient>
-      </defs>
       <path
-        fill="url(#linear-gradient)"
         stroke="rgba(0,0,0,0)"
         strokeMiterlimit="10"
         strokeWidth="1"

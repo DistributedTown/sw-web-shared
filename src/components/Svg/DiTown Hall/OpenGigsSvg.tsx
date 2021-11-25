@@ -16,19 +16,7 @@ function OpenGigsSvg(
       data-name="Group 1465"
       viewBox="0 0 36 36"
     >
-      <defs>
-        <linearGradient
-          id="linear-gradient"
-          x1="0.5"
-          x2="0.5"
-          y2="1"
-          gradientUnits="objectBoundingBox"
-        >
-          <stop offset="0"></stop>
-          <stop offset="1" stopColor="#545454"></stop>
-        </linearGradient>
-      </defs>
-      <g fill="url(#linear-gradient)">
+      <g>
         <path
           d="M7.245 24.652v-1.285H4.673v1.286a9 9 0 009 9h3.857v-2.572h-3.857a6.429 6.429 0 01-6.429-6.429z"
           data-name="Path 1564"

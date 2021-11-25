@@ -15,20 +15,7 @@ function TokenomicsSvg(
       className={className}
       viewBox="0 0 16.431 16.432"
     >
-      <defs>
-        <linearGradient
-          id="linear-gradient"
-          x1="0.5"
-          x2="0.5"
-          y2="1"
-          gradientUnits="objectBoundingBox"
-        >
-          <stop offset="0" stopColor="#fff"></stop>
-          <stop offset="1" stopColor="#c1c1c1"></stop>
-        </linearGradient>
-      </defs>
       <g
-        fill="url(#linear-gradient)"
         data-name="Group 1893"
         transform="translate(-141.564 -460.578)"
       >

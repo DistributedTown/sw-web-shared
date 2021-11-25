@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import Popover from "@mui/material/Popover";
 import "./sw-quote.scss";
 
@@ -7,12 +7,16 @@ export interface SwQuoteProps {
   children: JSX.Element;
   mobile?: boolean;
   mobileStartText?: JSX.Element;
+  className?: string;
+  showBorder?: boolean;
 }
 
 const SwQuote = ({
   children,
   mobileStartText,
   mobile = false,
+  className = "",
+  showBorder = true
 }: SwQuoteProps) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
@@ -27,7 +31,7 @@ const SwQuote = ({
   const open = Boolean(anchorEl);
 
   return (
-    <Box className="sw-box-quote">
+    <Box className={`sw-box-quote ${className}`}>
       {mobile ? (
         <>
           <Typography
@@ -57,22 +61,23 @@ const SwQuote = ({
               horizontal: "center",
             }}
             onClose={handlePopoverClose}
-            // disableRestoreFocus
+          // disableRestoreFocus
           >
-            <Quote children={children as JSX.Element} />
+            <Quote showBorder={showBorder} children={children as JSX.Element} />
           </Popover>
         </>
       ) : (
-        <Quote children={children as JSX.Element} />
+        <Quote showBorder={showBorder} children={children as JSX.Element} />
       )}
     </Box>
   );
 };
 
-const Quote = ({ children }: { children: JSX.Element }) => {
+const Quote = ({ children, showBorder }: { children: JSX.Element, showBorder: boolean }) => {
+  const theme = useTheme();
   return (
-    <div className="quote">
-      <Typography color="info" component="div" variant="subtitle1">
+    <div className={`quote ${showBorder ? 'show-border' : ''}`} style={{ boxShadow: showBorder ? theme.shadows[1] : 'none' }}>
+      <Typography color="info" component="div" variant="body1">
         {children}
       </Typography>
     </div>

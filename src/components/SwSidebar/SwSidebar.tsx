@@ -140,9 +140,11 @@ const SwSidebar = ({
           </IconButton>
         </Tooltip>)
       }
-      <div className="sw-sidebar-top">{
-        <SvgIcon component={sidebarTopIcon} width={mobile || !open ? '60' : '100'} height={mobile ? '60' : '100'} />
-      }</div>
+      {
+        sidebarTopIcon && <div className="sw-sidebar-top">{
+          <SvgIcon component={sidebarTopIcon} width={mobile || !open ? '60' : '100'} height={mobile ? '60' : '100'} />
+        }</div>
+      }
       <div className={`sw-sidebar-content`}>
        {children}
       </div>

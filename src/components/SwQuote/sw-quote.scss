@@ -6,6 +6,9 @@
 
 .quote {
   padding: 20px;
-  border: 2px solid $border-color-base;
-  background: rgba($primary-color, 0.8);
+  
+  &.show-border {
+    border: 3px solid $border-color-base;
+    background: $primary-color;
+  }
 }
