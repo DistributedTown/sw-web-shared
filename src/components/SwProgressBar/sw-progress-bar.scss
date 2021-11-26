@@ -1,5 +1,13 @@
+@import "../../styles/variables.scss";
+
 .sw-progress-bar {
   position: relative;
+
+  .MuiLinearProgress-root {
+    &:after {
+      transition: width .4s linear;
+    }
+  }
 
   .sw-progress-bar-label {
     position: absolute;
@@ -7,5 +15,6 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+    transition: color .4s linear;
   }
 }

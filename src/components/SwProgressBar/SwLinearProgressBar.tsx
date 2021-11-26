@@ -15,18 +15,34 @@ export interface ProgressBarProps {
   children: any;
 }
 
-const NoBorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: "20px",
-  borderRadius: 0,
-  border: `1px solid ${theme.palette.background.paper}`,
-  [`&.${linearProgressClasses.colorPrimary}`]: {
-    backgroundColor: theme.palette.background.paper,
-  },
-  [`& .${linearProgressClasses.bar}`]: {
+const NoBorderLinearProgress = styled(LinearProgress)(({ theme, value }) => {
+
+  const borderStyle = `1px solid ${theme.palette.background.paper}`;
+
+  return ({
+    height: "21px",
     borderRadius: 0,
-    backgroundColor: theme.palette.primary.main,
-  },
-}));
+    borderLeft: borderStyle,
+    borderTop: borderStyle,
+    borderRight: borderStyle,
+    // borderBottom: borderStyle,
+    [`&.${linearProgressClasses.colorPrimary}`]: {
+      backgroundColor: theme.palette.background.paper,
+    },
+    [`& .${linearProgressClasses.bar}`]: {
+      borderRadius: 0,
+      backgroundColor: theme.palette.primary.main,
+    },
+    '&:after': {
+      content: '""',
+      width: `${value}%`,
+      height: '1px',
+      bottom: '0',
+      background: theme.palette.secondary.main,
+      position: 'absolute',
+    }
+  })
+});
 
 const SwProgressBar = ({
   percentage,
@@ -44,10 +60,11 @@ const SwProgressBar = ({
             +percentage < 45
               ? "primary.main"
               : +percentage >= 45 && +percentage <= 55
-              ? "text.secondary"
-              : "background.paper",
+                ? "text.secondary"
+                : "background.paper",
           textAlign: "center",
         }}
+        lineHeight="21px"
         component="span"
         variant="body2"
       >

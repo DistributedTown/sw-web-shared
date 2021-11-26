@@ -6,7 +6,7 @@ export interface SwDividerProps extends DividerProps {
   width?: string
 }
 
-const SwDivider = ({ sx, width = '4px', ...props }: SwDividerProps) => {
+const SwDivider = ({ sx, width = '1px', ...props }: SwDividerProps) => {
   let styles = {
     ...(sx || {}),
   };
@@ -16,16 +16,16 @@ const SwDivider = ({ sx, width = '4px', ...props }: SwDividerProps) => {
       ...styles,
       width: "100%",
       height: width,
-      marginTop: "40px",
-      marginBottom: "40px",
+      marginTop: "56px",
+      marginBottom: "56px",
     };
   } else {
     styles = {
       ...styles,
       height: "100%",
       width: width,
-      marginLeft: "40px",
-      marginRight: "40px",
+      marginLeft: "56px",
+      marginRight: "56px",
     };
   }
 
