@@ -145,7 +145,7 @@ const SwSidebar = ({
           <SvgIcon component={sidebarTopIcon} width={mobile || !open ? '60' : '100'} height={mobile ? '60' : '100'} />
         }</div>
       }
-      <div className={`sw-sidebar-content`}>
+      <div className={`sw-sidebar-content ${mode}`}>
        {children}
       </div>
       {(!mobile && !preventClose) && <DrawerFooter>
