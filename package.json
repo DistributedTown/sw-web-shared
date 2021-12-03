@@ -74,14 +74,5 @@
     "rollup-plugin-postcss": "^4.0.1",
     "rollup-plugin-terser": "^7.0.2",
     "typescript": "^4.3.5"
-  },
-  "peerDependencies": {
-    "@mui/icons-material": ">=5.x",
-    "@emotion/react": ">=11.x",
-    "@emotion/styled": ">=11.x",
-    "@mui/material": ">=5.x",
-    "react": ">=16.x",
-    "react-dom": ">=16.x",
-    "react-router-dom": ">=5.x"
   }
 }
