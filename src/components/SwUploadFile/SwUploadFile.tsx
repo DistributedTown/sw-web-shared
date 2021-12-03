@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import { useDropzone } from "react-dropzone";
-import { renderToStaticMarkup } from 'react-dom/server';
 import "./sw-upload-file.scss";
 
 

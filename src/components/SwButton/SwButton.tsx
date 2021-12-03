@@ -3,9 +3,10 @@ import { Button, ButtonProps, darken, styled } from "@mui/material";
 import "./sw-button.scss";
 
 export interface SwButtonProps extends ButtonProps {
-  label: string;
+  label?: string;
   component?: any; 
   to?: string;
+  children?: JSX.Element;
 }
 
 const CustomizedButton = styled(Button)(
@@ -36,7 +37,8 @@ const CustomizedButton = styled(Button)(
 );
 
 const SwButton = ({
-  label,
+  label = null,
+  children = null,
   className = "",
   variant = "contained",
   color = "primary",
@@ -49,7 +51,7 @@ const SwButton = ({
       color={color}
       className={`sw-button ${className}`}
     >
-      <span style={{marginTop: '4px'}} className="sw-btn-label">{label}</span>
+      <span style={{marginTop: '4px'}} className="sw-btn-label">{children || label}</span>
     </CustomizedButton>
   );
 };

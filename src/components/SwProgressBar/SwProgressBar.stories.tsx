@@ -2,7 +2,7 @@ import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
 import { Story } from "@storybook/react";
 import SwProgressBar, {
-  NoBorderLinearProgressProps,
+  ProgressBarProps,
 } from "./SwLinearProgressBar";
 
 export default {
@@ -14,7 +14,7 @@ export default {
 } as Meta;
 
 // Create a master template for mapping args to render the Progress Bar component
-const Template: Story<NoBorderLinearProgressProps> = (args) => (
+const Template: Story<ProgressBarProps> = (args) => (
   <SwProgressBar {...args} />
 );
 

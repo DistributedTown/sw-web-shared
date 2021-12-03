@@ -76,7 +76,7 @@ const SwQuote = ({
 const Quote = ({ children, showBorder }: { children: JSX.Element, showBorder: boolean }) => {
   const theme = useTheme();
   return (
-    <div className={`quote ${showBorder ? 'show-border' : ''}`} style={{ boxShadow: showBorder && theme.shadows[1] }}>
+    <div className={`quote ${showBorder ? 'show-border' : ''}`} style={{ boxShadow: showBorder ? theme.shadows[1] : 'none' }}>
       <Typography color="info" component="div" variant="h2">
         {children}
       </Typography>

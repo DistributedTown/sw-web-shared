@@ -62,17 +62,30 @@
       fill: $primary-color;
     }
 
-    &:hover,
-    &.active-link {
-      background-color: $primary-color;
-      border-color: $border-color-base;
 
+    &.Mui-disabled {
       .MuiListItemText-root {
-        color: $foreground-color;
+        color: $disabled-color;
       }
 
       .sw-sidebar-menu-icon svg {
-        fill: $foreground-color;
+        fill: $disabled-color;
+      }
+    }
+
+    &:not(.Mui-disabled) {
+      &:hover,
+      &.active-link {
+        background-color: $primary-color;
+        border-color: $border-color-base;
+
+        .MuiListItemText-root {
+          color: $foreground-color;
+        }
+
+        .sw-sidebar-menu-icon svg {
+          fill: $foreground-color;
+        }
       }
     }
   }

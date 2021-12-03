@@ -41,7 +41,7 @@ export interface SwSidebarProps {
   width?: string;
   backgroundColor?: string;
   mode: 'dock' | 'close';
-  sidebarTopIcon?: React.ElementType;
+  sidebarTopIcon?: React.ElementType | null;
   children: JSX.Element,
   mobile?: boolean;
   handleToggle: () => any,

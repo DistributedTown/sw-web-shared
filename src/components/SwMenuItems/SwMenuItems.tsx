@@ -12,6 +12,7 @@ interface SwMenuItemBase {
   icon?: React.Component;
   component?: React.Component;
   children?: SwMenuItem[];
+  disabled?: boolean;
 }
 
 interface SwMenuDivider {
@@ -60,19 +61,20 @@ const SwMenuItems = ({
           return (
             <Tooltip
               key={id}
-              title={!open ? item.label : ""}
+              title={!open ? (item as SwMenuItemHref).label : ""}
               placement="right"
             >
               <ListItem
                 onClick={mobile ? handleToggle : () => null}
                 activeClassName="active-link"
                 component={NavLink}
-                to={item.href}
+                disabled={item.disabled}
+                to={(item as SwMenuItemHref).href}
                 replace
                 key={id}
               >
                 <div className="sw-sidebar-menu-icon">{item.icon}</div>
-                <ListItemText primary={item.label} />
+                <ListItemText primary={(item as SwMenuItemHref).label} />
               </ListItem>
             </Tooltip>
           );
@@ -81,12 +83,12 @@ const SwMenuItems = ({
         return (
           <Tooltip
             key={id}
-            title={!open ? item.label : ""}
+            title={!open ? (item as SwMenuItemButton).label : ""}
             placement="right"
           >
-            <ListItem onClick={item.onClick} key={id}>
+            <ListItem onClick={item.onClick} key={id} disabled={item.disabled}>
               <div className="sw-sidebar-menu-icon">{item.icon}</div>
-              <ListItemText primary={item.label} />
+              <ListItemText primary={(item as SwMenuItemButton).label} />
             </ListItem>
           </Tooltip>
         );

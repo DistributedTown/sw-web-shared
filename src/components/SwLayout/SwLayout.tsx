@@ -2,8 +2,8 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import "./sw-layout.scss";
-import styled from "styled-components";
 import SwScrollbar from "../SwScrollbar/SwScrollbar";
+import { styled } from "@mui/material";
 
 export interface SwLayoutProps {
   backgroundUrl?: any;

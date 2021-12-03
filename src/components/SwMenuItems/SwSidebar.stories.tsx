@@ -1,9 +1,9 @@
 import React from "react";
 import { Meta } from "@storybook/react/types-6-0";
-import SwSidebar, { SwSidebarProps } from "./SwSidebar";
 import { Story } from "@storybook/react";
 import { SvgIcon } from "@mui/material";
 import { JoinSelSvg } from "../..";
+import SwSidebar, { SwSidebarProps } from "../SwSidebar/SwSidebar";
 
 export default {
   title: "Components/SwSidebar",
