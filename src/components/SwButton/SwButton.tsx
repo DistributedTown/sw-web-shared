@@ -28,6 +28,7 @@ const CustomizedButton = styled(Button)(
   &.active-link {
     color: ${theme.palette.text.primary};
     background-color: ${theme.palette.primary.main};
+    borderColor: ${theme.palette.text.primary};
 
     .sw-btn-icon {
       fill: ${theme.palette.text.primary};

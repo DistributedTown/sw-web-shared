@@ -7,5 +7,5 @@ export interface SwButtonProps extends ButtonProps {
     to?: string;
     children?: JSX.Element;
 }
-declare const SwButton: ({ label, children, className, variant, color, ...rest }: SwButtonProps) => JSX.Element;
+declare const SwButton: ({ label, children, className, variant, color, sx, ...rest }: SwButtonProps) => JSX.Element;
 export default SwButton;

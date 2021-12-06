@@ -111,6 +111,7 @@ const SwSidebar = ({
             },
             ".MuiList-root": {
               width: '50px',
+              margin: '0 auto',
               transition: theme.transitions.create("width", {
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,
