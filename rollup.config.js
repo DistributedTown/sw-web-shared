@@ -21,9 +21,12 @@ export default {
       sourcemap: true,
     },
   ],
+  context: 'this',
   plugins: [
     peerDepsExternal(),
-    resolve(),
+    resolve({
+      browser: true
+    }),
     commonjs(),
     typescript({ useTsconfigDeclarationDir: true }),
     postcss(),

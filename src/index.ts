@@ -79,6 +79,8 @@ import { default as TokenomicsSvg2 } from "./components/Svg/Categories/Tokenomic
 import { default as TrainSportSvg } from "./components/Svg/Categories/TrainSportSvg";
 import { default as VideoSvg } from "./components/Svg/Categories/VideoSvg";
 import { default as SwProgressBar } from "./components/SwProgressBar/SwLinearProgressBar";
+import { default as SwShare } from "./components/SwShare/SwShare";
+import { default as SwClipboardCopy } from "./components/SwShare/clipboard-copy";
 
 export {
   SwLayout,
@@ -158,4 +160,6 @@ export {
   TokenomicsSvg,
   TrainSportSvg,
   VideoSvg,
+  SwClipboardCopy,
+  SwShare
 };

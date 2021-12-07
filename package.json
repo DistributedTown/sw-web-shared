@@ -25,9 +25,10 @@
     "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
+    "@babel/runtime": "^7.15.4",
     "react-dropzone": "^11.4.2",
-    "simplebar-react": "^2.3.6",
-    "@babel/runtime": "^7.15.4"
+    "react-share": "^4.4.0",
+    "simplebar-react": "^2.3.6"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
