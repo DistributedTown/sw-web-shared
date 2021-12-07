@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogContentText, DialogTitle, List, ListItem, Typography } from '@mui/material';
+import { Dialog, DialogContent, Typography } from '@mui/material';
 import { TwitterShareButton, LinkedinShareButton, TelegramShareButton } from 'react-share';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import TelegramIcon from '@mui/icons-material/Telegram';
@@ -13,10 +13,13 @@ export interface SimpleDialogProps {
   sx?: any;
   mode?: 'light' | 'dark',
   url: string;
+  twitterProps?: any;
+  linkedinProps?: any;
+  telegramProps?: any;
 }
 
 function SwShare(props: SimpleDialogProps) {
-  const { onClose, title, open, sx, mode, url } = props;
+  const { onClose, title, open, sx, mode, url, telegramProps, linkedinProps, twitterProps } = props;
 
   const handleClose = () => {
     onClose();
@@ -54,21 +57,21 @@ function SwShare(props: SimpleDialogProps) {
           width: '330px',
           margin: '10px auto 0 auto'
         }}>
-          <LinkedinShareButton url={url} className="social-button">
+          <LinkedinShareButton url={url} className="social-button" {...linkedinProps}>
             <LinkedInIcon sx={{
               width: '85px',
               height: '85px',
               color: mode === 'light' ? 'primary.main' : 'text.primary'
             }} />
           </LinkedinShareButton>
-          <TelegramShareButton url={url} className="social-button">
+          <TelegramShareButton url={url} className="social-button" {...telegramProps}>
             <TelegramIcon sx={{
               width: '85px',
               height: '85px',
               color: mode === 'light' ? 'primary.main' : 'text.primary'
             }} />
           </TelegramShareButton>
-          <TwitterShareButton url={url} className="social-button" title={title}>
+          <TwitterShareButton url={url} className="social-button" {...twitterProps}>
             <TwitterIcon sx={{
               width: '85px',
               height: '85px',
