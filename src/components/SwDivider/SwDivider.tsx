@@ -7,7 +7,7 @@ export interface SwDividerProps extends DividerProps {
 }
 
 const SwDivider = ({ sx, width = '1px', ...props }: SwDividerProps) => {
-  let styles = {
+  let styles: any = {
     ...(sx || {}),
   };
 

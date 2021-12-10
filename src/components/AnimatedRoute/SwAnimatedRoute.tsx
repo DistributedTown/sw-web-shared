@@ -3,9 +3,9 @@ import { Route } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import "./animated-route.scss";
 
-const SwAnimatedRoute = ({ exact, to, sx, component: Component, ...rest }) => {
+const SwAnimatedRoute = ({ to, sx, component: Component, ...rest }) => {
   return (
-    <Route exact={exact} key={to} path={to}>
+    <Route key={to} path={to}>
       {({ match }) => {
         return (
           <CSSTransition

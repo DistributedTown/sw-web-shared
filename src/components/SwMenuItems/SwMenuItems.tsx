@@ -66,6 +66,7 @@ const SwMenuItems = ({
             >
               <ListItem
                 onClick={mobile ? handleToggle : () => null}
+                // @ts-ignore
                 activeClassName="active-link"
                 component={NavLink}
                 disabled={item.disabled}
