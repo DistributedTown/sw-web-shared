@@ -38,13 +38,21 @@ const SwThumbComponent = (value: number) => {
   }
 }
 
-const SwSlider = ({ className, mode = 'black', ...rest }: SwSliderProps) => {
-  const [value, setValue] = React.useState(rest.defaultValue);
+const SwMarkComponent = () => {
+  return (props) => {
+    const { children, style, ownerState, markActive, ...other } = props;
+    return <div {...other} />;
+  };
+};
+
+const SwSlider = ({ className, mode = "black", ...rest }: SwSliderProps) => {
   return (
     <CustomizedSlider
       {...rest}
-      onChange={(_, v) => setValue(v)}
-      components={{ Thumb: SwThumbComponent(value as number) }}
+      components={{
+        Thumb: SwThumbComponent(rest.value as number),
+        Mark: SwMarkComponent(),
+      }}
       className={`sw-slider ${className} mode-${mode}`}
     />
   );

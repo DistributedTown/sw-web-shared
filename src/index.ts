@@ -50,7 +50,7 @@ import { default as Shape4Svg } from "./components/Svg/Background Shapes/Shape4S
 import { default as Shape5Svg } from "./components/Svg/Background Shapes/Shape5Svg";
 import { default as Shape6Svg } from "./components/Svg/Background Shapes/Shape6Svg";
 import { default as Shape7Svg } from "./components/Svg/Background Shapes/Shape7Svg";
-import DitoCreditsSuccessSvg from "./components/Svg/Icons/DitoCreditsSuccessSvg";
+import { default as DitoCreditsSuccessSvg } from "./components/Svg/Icons/DitoCreditsSuccessSvg";
 import { default as SwLogoSvg } from "./components/Svg/Main Design/SwLogoSvg";
 import { default as DitoLogoFullSvg } from "./components/Svg/Main Design/DitoLogoFullSvg";
 import { default as MainBackgroundSvg } from "./components/Svg/Main Design/MainBackgroundSvg";
@@ -81,6 +81,7 @@ import { default as VideoSvg } from "./components/Svg/Categories/VideoSvg";
 import { default as SwProgressBar } from "./components/SwProgressBar/SwLinearProgressBar";
 import { default as SwShare } from "./components/SwShare/SwShare";
 import { default as SwClipboardCopy } from "./components/SwShare/clipboard-copy";
+import { default as SwStepper } from "./components/SwStepper/SwStepper";
 
 export {
   SwLayout,
@@ -161,5 +162,6 @@ export {
   TrainSportSvg,
   VideoSvg,
   SwClipboardCopy,
-  SwShare
+  SwShare,
+  SwStepper,
 };

@@ -4,11 +4,12 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
 import copy from "rollup-plugin-copy";
+import multi from '@rollup/plugin-multi-entry';
 
 const packageJson = require("./package.json");
 
 export default {
-  input: "src/index.ts",
+  input: ["src/index.ts", "src/utils/index.ts"],
   output: [
     {
       file: packageJson.main,
@@ -23,6 +24,7 @@ export default {
   ],
   context: 'this',
   plugins: [
+    multi(),
     peerDepsExternal(),
     resolve({
       browser: true

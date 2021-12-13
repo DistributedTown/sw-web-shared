@@ -2,7 +2,10 @@
 
 .sw-slider.MuiSlider-root {
   border-radius: 0;
-  width: 200px;
+  width: 214px;
+  display: flex;
+  grid-gap: 1px;
+  align-items: center;
 
   .MuiSlider-track {
     border: 0;
@@ -15,6 +18,7 @@
     height: 8px;
     border-radius: 0;
     opacity: 1;
+    position: relative;
   }
 
   .MuiSlider-rail {
