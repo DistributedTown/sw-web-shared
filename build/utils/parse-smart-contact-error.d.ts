@@ -1,1 +1,1 @@
-export declare const ParseSWErrorMessage: (error: string) => string;
+export declare const ParseSWErrorMessage: (error: any) => any;

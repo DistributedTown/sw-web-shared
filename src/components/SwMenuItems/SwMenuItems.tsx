@@ -75,7 +75,12 @@ const SwMenuItems = ({
                 key={id}
               >
                 <div className="sw-sidebar-menu-icon">{item.icon}</div>
-                <ListItemText primary={(item as SwMenuItemHref).label} />
+                <ListItemText
+                  sx={{
+                    fontSize: "body1",
+                  }}
+                  primary={(item as SwMenuItemHref).label}
+                />
               </ListItem>
             </Tooltip>
           );

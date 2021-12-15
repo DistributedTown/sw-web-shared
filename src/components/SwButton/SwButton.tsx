@@ -1,10 +1,12 @@
 import * as React from "react";
-import { Button, ButtonProps, darken, styled } from "@mui/material";
+import { Button, ButtonProps, styled } from "@mui/material";
 import "./sw-button.scss";
 
 export interface SwButtonProps extends ButtonProps {
   label?: string;
-  component?: any; 
+  component?: any;
+  btnType?: "large" | "small" | "medium";
+  mode?: "light" | "dark";
   to?: string;
   children?: JSX.Element;
 }
@@ -13,46 +15,116 @@ const CustomizedButton = styled(Button)(
   ({ theme }) => `
   width: 100%;
   background-color: ${theme.palette.text.primary};
-  border: 2px solid ${theme.palette.text.primary};
-  height: 56px;
+  border: 2px solid;
   cursor: pointer;
-  line-height: 0;
-  color: ${theme.palette.primary.main};
+  box-shadow: ${theme.shadows[2]};
+
+  & > .sw-btn-label {
+    text-align: center;
+  }
+
+
+  &.light {
+    color: ${theme.palette.primary.main};
+    background-color: ${theme.palette.background.paper};
+    border-color: ${theme.palette.primary.main};
+
+    .MuiButton-endIcon svg {
+      fill: ${theme.palette.primary.main};
+    }
+
+    &:hover,
+    &.active-link {
+      background-color: ${theme.palette.primary.main};
+      color: ${theme.palette.text.primary};
+      border-color: ${theme.palette.background.paper};
+      .MuiButton-endIcon svg {
+        fill: ${theme.palette.background.paper};
+      }
+    }
+  }
+
+
+  &.dark {
+    background-color: ${theme.palette.primary.main};
+    color: ${theme.palette.text.primary};
+    border-color: ${theme.palette.background.paper};
+
+    .MuiButton-endIcon svg {
+      fill: ${theme.palette.background.paper};
+    }
+
+    &:hover,
+    &.active-link {
+      color: ${theme.palette.primary.main};
+      background-color: ${theme.palette.background.paper};
+      border-color: ${theme.palette.primary.main};
+  
+      .MuiButton-endIcon svg {
+        fill: ${theme.palette.primary.main};
+      }
+    }
+  }
+
+
+  &.large {
+    width: 380px;
+    height: 85px;
+    padding: 0 35px;
+    .MuiButton-endIcon {
+      margin-left: 0;
+      margin-right: 31px;
+      svg {
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    & > .sw-btn-label {
+      width: 100%;
+      font-size: ${theme.typography.h2.fontSize}
+    }
+  }
+
+  &.medium {
+    width: 180px;
+    height: 50px;
+    padding: 0 35px;
+    .MuiButton-endIcon {
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    & > .sw-btn-label {
+      font-size: ${theme.typography.body1.fontSize}
+    }
+  }
 
 
   &.Mui-disabled {
-    background-color: ${theme.palette.text.primary} !important;
+    background-color: ${theme.palette.text.disabled} !important;
   }
-
-  &:hover,
-  &.active-link {
-    color: ${theme.palette.text.primary};
-    background-color: ${theme.palette.primary.main};
-    borderColor: ${theme.palette.text.primary};
-
-    .sw-btn-icon {
-      fill: ${theme.palette.text.primary};
-    }
-  }
-`,
+`
 );
 
 const SwButton = ({
   label = null,
   children = null,
   className = "",
-  variant = "contained",
-  color = "primary",
+  mode = "dark",
+  btnType = null,
   ...rest
 }: SwButtonProps) => {
   return (
     <CustomizedButton
       {...rest}
-      variant={variant}
-      color={color}
-      className={`sw-button ${className}`}
+      className={`sw-button ${className} ${mode} ${btnType}`}
     >
-      <span style={{marginTop: '4px'}} className="sw-btn-label">{children || label}</span>
+      <span style={{ marginTop: "4px" }} className="sw-btn-label">
+        {children || label}
+      </span>
     </CustomizedButton>
   );
 };

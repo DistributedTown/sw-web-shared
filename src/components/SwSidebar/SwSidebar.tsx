@@ -74,92 +74,99 @@ const SwSidebar = ({
     <Drawer
       anchor="left"
       sx={{
-        width: !mobile ? width : '100%',
+        width: !mobile ? width : "100%",
         transition: theme.transitions.create("width", {
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.leavingScreen,
         }),
-        ...(!open && !mobile && {
-          transition: theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-          }),
-          [theme.breakpoints.up("sm")]: {
-            width: theme.spacing(12),
-          }
-        }),
-        flexShrink: 0,
-        '& .MuiDrawer-paper': {
-          transition: theme.transitions.create("width", {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-          }),
-          paddingX: '50px',
-          overflowX: "hidden",
-          backgroundColor: !mobile ? backgroundColor : 'black',
-          width: !mobile ? width : '100%',
-          boxSizing: 'border-box',
-          ...(!open && !mobile && {
-            padding: 0,
-            overflowX: "hidden",
+        ...(!open &&
+          !mobile && {
             transition: theme.transitions.create("width", {
               easing: theme.transitions.easing.sharp,
               duration: theme.transitions.duration.leavingScreen,
             }),
             [theme.breakpoints.up("sm")]: {
-              width: mode === 'dock' ? theme.spacing(12) : 0,
+              width: theme.spacing(12),
             },
-            ".MuiList-root": {
-              width: '50px',
-              margin: '0 auto',
+          }),
+        flexShrink: 0,
+        "& .MuiDrawer-paper": {
+          transition: theme.transitions.create("width", {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+          }),
+          paddingX: "50px",
+          overflowX: "hidden",
+          backgroundColor: !mobile ? backgroundColor : "black",
+          width: !mobile ? width : "100%",
+          boxSizing: "border-box",
+          ...(!open &&
+            !mobile && {
+              padding: 0,
+              overflowX: "hidden",
               transition: theme.transitions.create("width", {
                 easing: theme.transitions.easing.sharp,
                 duration: theme.transitions.duration.leavingScreen,
               }),
-              ".MuiListItem-root": {
-                padding: 0,
-                ".MuiListItemText-root": {
-                  display: "none",
+              [theme.breakpoints.up("sm")]: {
+                width: mode === "dock" ? theme.spacing(12) : 0,
+              },
+              ".MuiList-root": {
+                width: "50px",
+                margin: "0 auto",
+                transition: theme.transitions.create("width", {
+                  easing: theme.transitions.easing.sharp,
+                  duration: theme.transitions.duration.leavingScreen,
+                }),
+                ".MuiListItem-root": {
+                  padding: 0,
+                  ".MuiListItemText-root": {
+                    display: "none",
+                  },
                 },
               },
-            }
-          }),
-          ...(sx || {})
+            }),
+          ...(sx || {}),
         },
       }}
-      className={`sw-main-sidebar ${mobile ? 'is-mobile' : ''}`}
-      variant={mobile ? 'temporary' : 'permanent'}
-      open={open}>
-      {
-        mobile && (<Tooltip
-          title="Close sidebar"
-          placement="right"
-          color="white"
-        >
-          <IconButton className="sw-sidebar-close-button" color="info" onClick={handleToggle}>
+      className={`sw-main-sidebar ${mobile ? "is-mobile" : ""}`}
+      variant={mobile ? "temporary" : "permanent"}
+      open={open}
+    >
+      {mobile && (
+        <Tooltip title="Close sidebar" placement="right" color="white">
+          <IconButton
+            className="sw-sidebar-close-button"
+            color="info"
+            onClick={handleToggle}
+          >
             <CloseIcon />
           </IconButton>
-        </Tooltip>)
-      }
-      {
-        sidebarTopIcon && <div className="sw-sidebar-top">{
-          <SvgIcon component={sidebarTopIcon} width={mobile || !open ? '60' : '100'} height={mobile ? '60' : '100'} />
-        }</div>
-      }
-      <div className={`sw-sidebar-content ${mode}`}>
-       {children}
-      </div>
-      {(!mobile && !preventClose) && <DrawerFooter>
-        <Tooltip
-          title={!open ? 'Open' : "Close"}
-          placement="right"
-        >
-          <IconButton color="info" onClick={handleToggle}>
-            {!open ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
         </Tooltip>
-
-      </DrawerFooter>}
+      )}
+      {sidebarTopIcon && (
+        <div className="sw-sidebar-top">
+          {
+            <SvgIcon
+              component={sidebarTopIcon}
+              width={mobile || !open ? "60" : "100"}
+              height={mobile ? "60" : "100"}
+            />
+          }
+        </div>
+      )}
+      <div className={`sw-sidebar-content ${open ? "open" : "closed"} ${mode}`}>
+        {children}
+      </div>
+      {!mobile && !preventClose && (
+        <DrawerFooter>
+          <Tooltip title={!open ? "Open" : "Close"} placement="right">
+            <IconButton color="info" onClick={handleToggle}>
+              {!open ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            </IconButton>
+          </Tooltip>
+        </DrawerFooter>
+      )}
     </Drawer>
   );
 };

@@ -19,20 +19,17 @@
   }
 
   .sw-sidebar-menu-icon {
-    width: 26px;
-    height: 26px;
-    margin: 10px;
-  }
-
-  .sw-sidebar-top {
-    flex: 35%;
+    width: 18px;
+    height: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .sw-sidebar-menu {
-    flex: 65%;
+    svg {
+      width: 18px;
+      height: 18px;
+      margin-left: 3px;
+      margin-top: 3px;
+    }
   }
 
   &.MuiDrawer-docked {
@@ -47,10 +44,12 @@
     border: 2px solid $border-color-base;
     height: 46px;
     cursor: pointer;
+    width: 100%;
     transition: $transition;
 
     .MuiListItemText-root {
       color: $link-color;
+      margin-left: 10px;
     }
 
     + .MuiListItem-root {
@@ -61,15 +60,9 @@
       fill: $primary-color;
     }
 
-
     &.Mui-disabled {
-      .MuiListItemText-root {
-        color: $disabled-color;
-      }
-
-      .sw-sidebar-menu-icon svg {
-        fill: $disabled-color;
-      }
+      background-color: $disabled-color;
+      border-color: $foreground-color;
     }
 
     &:not(.Mui-disabled) {

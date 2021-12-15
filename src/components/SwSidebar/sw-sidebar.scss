@@ -19,16 +19,18 @@
     &.close {
       width: 100%;
     }
+
+   &.closed.dock {
+    .sw-sidebar-menu-icon {
+      width: 100%;
+    }
+    }
   }
+
+ 
 
   &:not(.is-mobile) .MuiDrawer-paper {
     border-right: 1px solid $foreground-color;
-  }
-
-  .sw-sidebar-menu-icon {
-    width: 26px;
-    height: 26px;
-    margin: 10px;
   }
 
   .sw-sidebar-top {
