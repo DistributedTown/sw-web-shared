@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, styled, Typography, useTheme } from "@mui/material";
 import Popover from "@mui/material/Popover";
-import "./sw-quote.scss";
 
 export interface SwQuoteProps {
   children: JSX.Element;
@@ -11,12 +10,22 @@ export interface SwQuoteProps {
   showBorder?: boolean;
 }
 
+const CustomizedQuote = styled(Box)(
+  ({ theme }) => `
+  padding: 20px;
+  &.show-border {
+    border: 3px solid ${theme.palette.background.paper};
+    background: ${theme.palette.primary.main};
+  }
+`
+);
+
 const SwQuote = ({
   children,
   mobileStartText,
   mobile = false,
   className = "",
-  showBorder = true
+  showBorder = true,
 }: SwQuoteProps) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
 
@@ -31,7 +40,7 @@ const SwQuote = ({
   const open = Boolean(anchorEl);
 
   return (
-    <Box className={`sw-box-quote ${className}`}>
+    <CustomizedQuote className={`sw-box-quote ${className}`}>
       {mobile ? (
         <>
           <Typography
@@ -61,7 +70,7 @@ const SwQuote = ({
               horizontal: "center",
             }}
             onClose={handlePopoverClose}
-          // disableRestoreFocus
+            // disableRestoreFocus
           >
             <Quote showBorder={showBorder} children={children as JSX.Element} />
           </Popover>
@@ -69,7 +78,7 @@ const SwQuote = ({
       ) : (
         <Quote showBorder={showBorder} children={children as JSX.Element} />
       )}
-    </Box>
+    </CustomizedQuote>
   );
 };
 

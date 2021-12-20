@@ -1,10 +1,8 @@
-import { Avatar } from "@mui/material";
+import { Avatar, styled } from "@mui/material";
 import React, { useState } from "react";
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
 import { useDropzone } from "react-dropzone";
-import "./sw-upload-file.scss";
-
 
 function DefaultUploadSvg() {
   return (
@@ -24,27 +22,88 @@ function DefaultUploadSvg() {
   );
 }
 
+const UploadWrapper = styled("div")(
+  ({ theme }) => `
+  position: relative;
+  .MuiAvatar-root {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: ${theme.transitions.create(["opacity", "transform"])};
+    backface-visibility: hidden;
+    border: 3px solid ${theme.palette.background.paper};
+    border-radius: 0;
+    background: ${theme.palette.background.paper};
+    box-sizing: border-box;
+  }
+
+  .MuiSvgIcon-root {
+    fill: ${theme.palette.primary.main};
+  }
+
+  .sw-upload-action {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    transition: ${theme.transitions.create(["opacity", "transform"])};
+
+    .MuiAvatar-fallback {
+      fill: ${theme.palette.primary.main};
+    }
+
+    .MuiSvgIcon-root {
+      width: 1.5em;
+      height: 1.5em;
+
+      &.remove {
+        color: ${theme.palette.error.main};
+      }
+
+      &.upload {
+        fill: ${theme.palette.background.paper};
+      }
+    }
+  }
+
+  &:hover .MuiAvatar-root {
+    opacity: 0.3;
+    border-color: ${theme.palette.background.paper};
+  }
+
+  &:hover .sw-upload-action {
+    opacity: 1;
+  }
+
+`
+);
+
 const SwUploadFile = ({
   multiple = false,
   sx = {
-    width: '120px',
-    height: '120px'
+    width: "120px",
+    height: "120px",
   } as any,
   initialPreviewUrl = null,
-  fileChange = (file: File) => null
+  fileChange = (file: File) => null,
 }: any) => {
   const [preview, setPreview] = useState(initialPreviewUrl);
   const { getRootProps, getInputProps, open } = useDropzone({
     multiple,
     disabled: !!preview,
-    accept: 'image/jpeg, image/png',
+    accept: "image/jpeg, image/png",
     noClick: true,
     noKeyboard: true,
     onDrop: ([file]) => {
       const url = URL.createObjectURL(file);
       setPreview(url);
       fileChange(file);
-    }
+    },
   });
 
   const handleActionClick = () => {
@@ -54,18 +113,22 @@ const SwUploadFile = ({
     } else {
       open();
     }
-  }
+  };
 
   const Action = () => {
     return (
       <div onClick={handleActionClick} className="sw-upload-action">
-        {preview ? <HighlightOffIcon className="remove" /> : <PhotoCameraIcon className="upload" />}
+        {preview ? (
+          <HighlightOffIcon className="remove" />
+        ) : (
+          <PhotoCameraIcon className="upload" />
+        )}
       </div>
-    )
-  }
+    );
+  };
 
   return (
-    <div {...getRootProps({ className: 'sw-uploader-wrapper', style: sx })}>
+    <div {...getRootProps({ className: "sw-uploader-wrapper", style: sx })}>
       <Avatar
         alt="Avatar"
         src={preview}
@@ -81,7 +144,6 @@ const SwUploadFile = ({
       </Avatar>
       <Action />
       <input {...getInputProps()} />
-
     </div>
   );
 };

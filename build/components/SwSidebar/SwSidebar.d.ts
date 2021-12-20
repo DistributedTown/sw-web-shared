@@ -1,5 +1,4 @@
 import React from "react";
-import "./sw-sidebar.scss";
 interface SwSidebarMenuItemBase {
     color?: "primary" | "warn" | "secondary";
     icon?: React.Component;
@@ -25,7 +24,7 @@ export interface SwSidebarProps {
     open?: boolean;
     width?: string;
     backgroundColor?: string;
-    mode: 'dock' | 'close';
+    mode: "dock" | "close";
     sidebarTopIcon?: React.ElementType | null;
     children: JSX.Element;
     mobile?: boolean;
@@ -33,5 +32,5 @@ export interface SwSidebarProps {
     sx?: any;
     preventClose?: boolean;
 }
-declare const SwSidebar: ({ open, width, mode, preventClose, backgroundColor, sidebarTopIcon, mobile, handleToggle, children, sx }: SwSidebarProps) => JSX.Element;
+declare const SwSidebar: ({ open, width, mode, preventClose, backgroundColor, sidebarTopIcon, mobile, handleToggle, children, sx, }: SwSidebarProps) => JSX.Element;
 export default SwSidebar;

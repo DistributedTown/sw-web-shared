@@ -5,13 +5,10 @@ import { default as JoinSelSvg } from "./components/Svg/Icons/JoinSelSvg";
 import { default as DitoLogoSvg } from "./components/Svg/Main Design/DitoLogoSvg";
 import { default as SwButton } from "./components/SwButton/SwButton";
 import { default as SwUploadFile } from "./components/SwUploadFile/SwUploadFile";
-import { default as SwAnimated } from "./components/AnimatedRoute/SwAnimatedRoute";
 import { default as SwScrollbar } from "./components/SwScrollbar/SwScrollbar";
 import { default as SwDivider } from "./components/SwDivider/SwDivider";
 import { default as SwQuote } from "./components/SwQuote/SwQuote";
 import { default as SwSlider } from "./components/SwSlider/SwSlider";
-
-
 
 // icon imports
 import { default as QRCodeSvg } from "./components/Svg/Main Design/QRCodeSvg";
@@ -88,7 +85,6 @@ export {
   SwSidebar,
   SwMenuItems,
   SwButton,
-  SwAnimated,
   SwScrollbar,
   SwDivider,
   SwQuote,

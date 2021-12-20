@@ -1,5 +1,4 @@
 /// <reference types="react" />
-import "./sw-stepper.scss";
 declare const SwStepper: ({ stepperText, title, steps, description, activeStep, descriptionTooltip, backButton, nextbutton, }: {
     stepperText: any;
     title: any;

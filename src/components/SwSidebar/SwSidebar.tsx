@@ -1,11 +1,10 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
-import "./sw-sidebar.scss";
 import Tooltip from "@mui/material/Tooltip/Tooltip";
 import { createTheme, Drawer, IconButton, SvgIcon } from "@mui/material";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import CloseIcon from '@mui/icons-material/Close';
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import CloseIcon from "@mui/icons-material/Close";
 
 interface SwSidebarMenuItemBase {
   color?: "primary" | "warn" | "secondary";
@@ -40,38 +39,96 @@ export interface SwSidebarProps {
   open?: boolean;
   width?: string;
   backgroundColor?: string;
-  mode: 'dock' | 'close';
+  mode: "dock" | "close";
   sidebarTopIcon?: React.ElementType | null;
-  children: JSX.Element,
+  children: JSX.Element;
   mobile?: boolean;
-  handleToggle: () => any,
-  sx?: any,
+  handleToggle: () => any;
+  sx?: any;
   preventClose?: boolean;
 }
 
-const DrawerFooter = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: '48px'
+const DrawerFooter = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  height: "48px",
 }));
+
+const CustomizedDrawer = styled(Drawer)(
+  ({ theme }) => `
+  .sw-sidebar-divider {
+    margin: 40px 0;
+    height: 2px;
+    background-color: ${theme.palette.background.paper};
+  }
+
+  .sw-sidebar-close-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+
+  .sw-sidebar-content {
+    flex: 65%;
+    &.close {
+      width: 100%;
+    }
+
+   &.closed.dock {
+    .sw-sidebar-menu-icon {
+      width: 100%;
+    }
+    }
+  }
+
+  &:not(.is-mobile) .MuiDrawer-paper {
+    border-right: 1px solid ${theme.palette.background.paper};
+  }
+
+  .sw-sidebar-top {
+    flex: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sw-sidebar-menu {
+    flex: 65%;
+  }
+
+  &.MuiDrawer-docked {
+    .MuiPaper-root {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  ${theme.breakpoints.down("sm")} {
+    .sw-sidebar-top {
+      flex: 10%;
+    }
+  }
+
+`
+);
 
 const SwSidebar = ({
   open = false,
-  width = '300px',
-  mode = 'dock',
+  width = "300px",
+  mode = "dock",
   preventClose = false,
   backgroundColor = "transparent",
   sidebarTopIcon = null,
   mobile = false,
   handleToggle = () => null,
   children,
-  sx = {}
+  sx = {},
 }: SwSidebarProps) => {
   const theme = createTheme();
 
   return (
-    <Drawer
+    <CustomizedDrawer
       anchor="left"
       sx={{
         width: !mobile ? width : "100%",
@@ -167,7 +224,7 @@ const SwSidebar = ({
           </Tooltip>
         </DrawerFooter>
       )}
-    </Drawer>
+    </CustomizedDrawer>
   );
 };
 

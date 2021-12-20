@@ -1,5 +1,4 @@
 /// <reference types="react" />
-import "./sw-layout.scss";
 export interface SwLayoutProps {
     backgroundUrl?: any;
     hideTop?: boolean;

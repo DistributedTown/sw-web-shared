@@ -1,5 +1,4 @@
 import React from "react";
-import "./sw-menu-items.scss";
 interface SwMenuItemBase {
     color?: "primary" | "warn" | "secondary";
     icon?: React.Component;
@@ -28,5 +27,5 @@ export interface SwMenuItemsProps {
     mobile?: boolean;
     handleToggle: () => any;
 }
-declare const SwMenuItems: ({ menuItems, open, mobile, handleToggle }: SwMenuItemsProps) => JSX.Element;
+declare const SwMenuItems: ({ menuItems, open, mobile, handleToggle, }: SwMenuItemsProps) => JSX.Element;
 export default SwMenuItems;

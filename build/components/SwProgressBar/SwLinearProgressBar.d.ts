@@ -1,5 +1,4 @@
 /// <reference types="react" />
-import "./sw-progress-bar.scss";
 export interface ProgressBarProps {
     className?: string;
     percentage?: any;

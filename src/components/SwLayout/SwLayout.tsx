@@ -1,7 +1,6 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import "./sw-layout.scss";
 import SwScrollbar from "../SwScrollbar/SwScrollbar";
 import { styled } from "@mui/material";
 
@@ -21,6 +20,14 @@ const CustomizedLayout = styled(Box)(
   .MuiContainer-root:not(.sw-layout-top) {
     position: relative;
     height: 100%;
+  }
+
+  .sw-layout-top {
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px;
+    position: relative;
+    height: 50px;
   }
 `
 );

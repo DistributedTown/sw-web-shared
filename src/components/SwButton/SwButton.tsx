@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Button, ButtonProps, styled } from "@mui/material";
-import "./sw-button.scss";
 
 export interface SwButtonProps extends ButtonProps {
   label?: string;
@@ -18,6 +17,7 @@ const CustomizedButton = styled(Button)(
   border: 2px solid;
   cursor: pointer;
   box-shadow: ${theme.shadows[2]};
+  text-transform: inherit;
 
   & > .sw-btn-label {
     text-align: center;
@@ -113,7 +113,7 @@ const SwButton = ({
   label = null,
   children = null,
   className = "",
-  mode = "dark",
+  mode = null,
   btnType = null,
   ...rest
 }: SwButtonProps) => {

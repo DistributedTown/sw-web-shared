@@ -3,9 +3,9 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import "./sw-menu-items.scss";
 import { NavLink } from "react-router-dom";
 import Tooltip from "@mui/material/Tooltip/Tooltip";
+import { styled } from "@mui/material";
 
 interface SwMenuItemBase {
   color?: "primary" | "warn" | "secondary";
@@ -32,26 +32,90 @@ interface SwMenuItemHref extends SwMenuItemBase {
   href?: string;
 }
 
-export type SwMenuItem =
-  | SwMenuItemButton
-  | SwMenuDivider
-  | SwMenuItemHref;
+export type SwMenuItem = SwMenuItemButton | SwMenuDivider | SwMenuItemHref;
 
 export interface SwMenuItemsProps {
   menuItems: Partial<SwMenuItem>[];
   open?: boolean;
   mobile?: boolean;
-  handleToggle: () => any
+  handleToggle: () => any;
 }
+
+const CustomizedList = styled(List)(
+  ({ theme }) => `
+.sw-sidebar-menu-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 3px;
+    margin-top: 3px;
+  }
+}
+
+.MuiListItem-root {
+  background-color: ${theme.palette.background.paper};
+  border: 2px solid ${theme.palette.background.paper};
+  height: 46px;
+  cursor: pointer;
+  width: 100%;
+
+
+  transition: ${theme.transitions.create([
+    "background-color",
+    "color",
+    "fill",
+  ])};
+
+  .MuiListItemText-root {
+    color: ${theme.palette.primary.main};
+    margin-left: 10px;
+  }
+
+  + .MuiListItem-root {
+    margin-top: 25px;
+  }
+
+  .sw-sidebar-menu-icon svg {
+    fill: ${theme.palette.primary.main};
+  }
+
+  &.Mui-disabled {
+    background-color: ${theme.palette.text.disabled};
+    border-color: ${theme.palette.background.paper};
+  }
+
+  &:not(.Mui-disabled) {
+    &:hover,
+    &.active-link {
+      background-color: ${theme.palette.primary.main};
+      border-color: ${theme.palette.background.paper};
+
+      .MuiListItemText-root {
+        color: ${theme.palette.text.primary};
+      }
+
+      .sw-sidebar-menu-icon svg {
+        fill: ${theme.palette.text.primary};
+      }
+    }
+  }
+}
+`
+);
 
 const SwMenuItems = ({
   menuItems = [],
   open = false,
   mobile = false,
-  handleToggle = () => null
+  handleToggle = () => null,
 }: SwMenuItemsProps) => {
   return (
-    <List className="sw-sidebar-menu">
+    <CustomizedList className="sw-sidebar-menu">
       {menuItems.map((item, id) => {
         if (item.type === "divider") {
           return <Divider key={id} className="sw-sidebar-divider" />;
@@ -99,7 +163,7 @@ const SwMenuItems = ({
           </Tooltip>
         );
       })}
-    </List>
+    </CustomizedList>
   );
 };
 

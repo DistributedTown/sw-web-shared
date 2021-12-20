@@ -1,8 +1,59 @@
-import { Badge, Box, MobileStepper, Tooltip, Typography } from "@mui/material";
+import {
+  Badge,
+  Box,
+  MobileStepper,
+  styled,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import React, { Fragment } from "react";
 import CheckIcon from "@mui/icons-material/Check";
 import InfoIcon from "@mui/icons-material/Info";
-import "./sw-stepper.scss";
+
+const CustomizedStepperWrapper = styled(Box)(
+  ({ theme }) => `
+.stepper-dots {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+
+  .stepper-dot {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    border: 3px solid ${theme.palette.background.paper};
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.active {
+      background-color: ${theme.palette.background.paper};
+    }
+  }
+
+  .stepper-line {
+    border-top: 4px solid ${theme.palette.background.paper};
+    flex: 1;
+  }
+}
+
+.stepper-top {
+  position: absolute;
+  margin: 0 auto;
+  width: 100%;
+  top: 0px;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.MuiMobileStepper-dots {
+  display: none;
+}
+`
+);
 
 const SwStepper = ({
   stepperText,
@@ -15,7 +66,7 @@ const SwStepper = ({
   nextbutton = null,
 }) => {
   return (
-    <Box sx={{ width: "100%", position: "relative" }}>
+    <CustomizedStepperWrapper sx={{ width: "100%", position: "relative" }}>
       {stepperText && (
         <Typography
           className="stepper-top"
@@ -100,7 +151,7 @@ const SwStepper = ({
           </Badge>
         </Typography>
       </Box>
-    </Box>
+    </CustomizedStepperWrapper>
   );
 };
 
