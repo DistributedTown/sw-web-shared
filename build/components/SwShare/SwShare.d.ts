@@ -4,7 +4,9 @@ export interface SimpleDialogProps {
     title: string;
     onClose: () => void;
     sx?: any;
-    mode?: 'light' | 'dark';
+    dialogsx?: any;
+    fullScreen?: boolean;
+    mode?: "light" | "dark";
     url: string;
     twitterProps?: any;
     linkedinProps?: any;

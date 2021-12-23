@@ -29,7 +29,7 @@ const CustomizedButton = styled(Button)(
     background-color: ${theme.palette.background.paper};
     border-color: ${theme.palette.primary.main};
 
-    .MuiButton-endIcon svg {
+    .MuiButton-endIcon svg, .MuiButton-startIcon svg {
       fill: ${theme.palette.primary.main};
     }
 
@@ -38,7 +38,7 @@ const CustomizedButton = styled(Button)(
       background-color: ${theme.palette.primary.main};
       color: ${theme.palette.text.primary};
       border-color: ${theme.palette.background.paper};
-      .MuiButton-endIcon svg {
+      .MuiButton-endIcon svg, .MuiButton-startIcon svg {
         fill: ${theme.palette.background.paper};
       }
     }
@@ -50,7 +50,7 @@ const CustomizedButton = styled(Button)(
     color: ${theme.palette.text.primary};
     border-color: ${theme.palette.background.paper};
 
-    .MuiButton-endIcon svg {
+    .MuiButton-endIcon svg, .MuiButton-startIcon svg {
       fill: ${theme.palette.background.paper};
     }
 
@@ -60,7 +60,7 @@ const CustomizedButton = styled(Button)(
       background-color: ${theme.palette.background.paper};
       border-color: ${theme.palette.primary.main};
   
-      .MuiButton-endIcon svg {
+      .MuiButton-endIcon svg, .MuiButton-startIcon svg {
         fill: ${theme.palette.primary.main};
       }
     }
@@ -71,13 +71,21 @@ const CustomizedButton = styled(Button)(
     width: 380px;
     height: 85px;
     padding: 0 35px;
-    .MuiButton-endIcon {
-      margin-left: 0;
-      margin-right: 31px;
+    .MuiButton-endIcon, .MuiButton-startIcon {
       svg {
         width: 45px;
         height: 45px;
       }
+    }
+
+    .MuiButton-endIcon {
+      margin-left: 0;
+      margin-right: 31px;
+    }
+
+    .MuiButton-startIcon {
+      margin-right: 0;
+      margin-left: 31px;
     }
 
     & > .sw-btn-label {
@@ -90,7 +98,7 @@ const CustomizedButton = styled(Button)(
     width: 180px;
     height: 50px;
     padding: 0 35px;
-    .MuiButton-endIcon {
+    .MuiButton-endIcon, .MuiButton-startIcon {
       svg {
         width: 16px;
         height: 16px;
