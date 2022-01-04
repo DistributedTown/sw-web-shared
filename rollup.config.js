@@ -5,6 +5,7 @@ import typescript from "rollup-plugin-typescript2";
 import postcss from "rollup-plugin-postcss";
 import copy from "rollup-plugin-copy";
 import multi from '@rollup/plugin-multi-entry';
+import externals from "rollup-plugin-node-externals";
 
 const packageJson = require("./package.json");
 
@@ -22,14 +23,19 @@ export default {
       sourcemap: true,
     },
   ],
-  context: 'this',
+  context: "this",
   plugins: [
+    externals({
+      devDeps: false,
+    }),
     multi(),
     peerDepsExternal(),
     resolve({
-      browser: true
+      browser: true,
     }),
-    commonjs(),
+    commonjs({
+      include: /node_modules/,
+    }),
     typescript({ useTsconfigDeclarationDir: true }),
     postcss(),
     copy({
