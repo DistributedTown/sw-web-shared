@@ -90,23 +90,28 @@ const CustomizedButton = styled(Button)(
 
     & > .sw-btn-label {
       width: 100%;
-      font-size: ${theme.typography.h2.fontSize}
+      font-size: ${theme.typography.h2.fontSize};
+      line-height: 45px;
     }
   }
 
   &.medium {
     width: 180px;
     height: 50px;
-    padding: 0 35px;
+    padding: 10px;
+    .MuiButton-startIcon {
+      margin-right: 10px;
+    }
     .MuiButton-endIcon, .MuiButton-startIcon {
       svg {
-        width: 16px;
-        height: 16px;
+        width: 25px;
+        height: 25px;
       }
     }
 
     & > .sw-btn-label {
-      font-size: ${theme.typography.body1.fontSize}
+      font-size: ${theme.typography.body1.fontSize};
+      line-height: 25px;
     }
   }
 
@@ -130,7 +135,7 @@ const SwButton = ({
       {...rest}
       className={`sw-button ${className} ${mode} ${btnType}`}
     >
-      <span style={{ marginTop: "4px" }} className="sw-btn-label">
+      <span style={{marginTop: '4px'}}className="sw-btn-label">
         {children || label}
       </span>
     </CustomizedButton>
