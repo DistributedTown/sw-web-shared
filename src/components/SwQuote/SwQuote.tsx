@@ -15,7 +15,8 @@ const CustomizedQuote = styled(Box)(
   padding: 20px;
   &.show-border {
     border: 3px solid ${theme.palette.background.paper};
-    background: ${theme.palette.primary.main};
+    background: ${theme.palette.background.dark};
+    box-shadow:  ${theme.shadows[1]};
   }
 `
 );
@@ -72,11 +73,11 @@ const SwQuote = ({
             onClose={handlePopoverClose}
             // disableRestoreFocus
           >
-            <Quote showBorder={showBorder} children={children as JSX.Element} />
+            <Quote showBorder={false} children={children as JSX.Element} />
           </Popover>
         </>
       ) : (
-        <Quote showBorder={showBorder} children={children as JSX.Element} />
+        <Quote showBorder={false} children={children as JSX.Element} />
       )}
     </CustomizedQuote>
   );
