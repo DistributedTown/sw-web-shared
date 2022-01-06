@@ -10,8 +10,9 @@ import React, { Fragment } from "react";
 import CheckIcon from "@mui/icons-material/Check";
 import InfoIcon from "@mui/icons-material/Info";
 
-const CustomizedStepperWrapper = styled(Box)(
-  ({ theme }) => `
+const CustomizedStepperWrapper = (mode: string) =>
+  styled(Box)(
+    ({ theme }) => `
 .stepper-dots {
   width: 100%;
   display: flex;
@@ -22,19 +23,31 @@ const CustomizedStepperWrapper = styled(Box)(
     height: 36px;
     width: 36px;
     border-radius: 50%;
-    border: 3px solid ${theme.palette.background.paper};
+    border: 3px solid ${
+      mode === "light"
+        ? theme.palette.background.paper
+        : theme.palette.primary.main
+    };
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
 
     &.active {
-      background-color: ${theme.palette.background.paper};
+      background-color: ${
+        mode === "light"
+          ? theme.palette.background.paper
+          : theme.palette.primary.main
+      };
     }
   }
 
   .stepper-line {
-    border-top: 4px solid ${theme.palette.background.paper};
+    border-top: 4px solid ${
+      mode === "light"
+        ? theme.palette.background.paper
+        : theme.palette.primary.main
+    };
     flex: 1;
   }
 }
@@ -53,7 +66,7 @@ const CustomizedStepperWrapper = styled(Box)(
   display: none;
 }
 `
-);
+  );
 
 const SwStepper = ({
   stepperText,
@@ -64,13 +77,17 @@ const SwStepper = ({
   descriptionTooltip = null,
   backButton = null,
   nextbutton = null,
+  mode = "light",
 }) => {
+
+  console.log("hereeeeeeeee------------");
+  const Wrapper = CustomizedStepperWrapper(mode);
   return (
-    <CustomizedStepperWrapper sx={{ width: "100%", position: "relative" }}>
+    <Wrapper sx={{ width: "100%", position: "relative" }}>
       {stepperText && (
         <Typography
           className="stepper-top"
-          sx={{ color: "text.primary" }}
+          sx={{ color: mode === "light" ? "text.primary" : "primary.main" }}
           component="div"
           variant="h1"
           align="center"
@@ -88,6 +105,9 @@ const SwStepper = ({
           display: activeStep !== -1 ? "flex" : "none",
           backgroundColor: "transparent",
           width: "100%",
+          "&.MuiMobileStepper-root": {
+            display: !!backButton || !!nextbutton ? "inherit" : "none",
+          },
         }}
         nextButton={nextbutton}
         backButton={backButton}
@@ -106,7 +126,9 @@ const SwStepper = ({
                     index === activeStep ? "active" : ""
                   }`}
                 >
-                  {index < activeStep && <CheckIcon color="info" />}
+                  {index < activeStep && (
+                    <CheckIcon color={mode === "light" ? "info" : "primary"} />
+                  )}
                 </div>
                 {steps.length - 1 !== index && <div className="stepper-line" />}
               </Fragment>
@@ -114,7 +136,11 @@ const SwStepper = ({
           })}
         </div>
         <Typography
-          sx={{ color: "text.primary", textAlign: "center", pb: 1 }}
+          sx={{
+            color: mode === "light" ? "text.primary" : "primary.main",
+            textAlign: "center",
+            pb: 1,
+          }}
           component="div"
           variant="h2"
         >
@@ -122,7 +148,7 @@ const SwStepper = ({
         </Typography>
         <Typography
           sx={{
-            color: "text.primary",
+            color: mode === "light" ? "text.primary" : "primary.main",
             textAlign: "center",
             pb: 2,
             m: "0 -20px",
@@ -151,7 +177,7 @@ const SwStepper = ({
           </Badge>
         </Typography>
       </Box>
-    </CustomizedStepperWrapper>
+    </Wrapper>
   );
 };
 

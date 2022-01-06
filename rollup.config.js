@@ -25,17 +25,13 @@ export default {
   ],
   context: "this",
   plugins: [
-    externals({
-      devDeps: false,
-    }),
+    externals(),
     multi(),
     peerDepsExternal(),
     resolve({
       browser: true,
     }),
-    commonjs({
-      include: /node_modules/,
-    }),
+    commonjs(),
     typescript({ useTsconfigDeclarationDir: true }),
     postcss(),
     copy({

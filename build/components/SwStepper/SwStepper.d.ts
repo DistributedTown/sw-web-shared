@@ -1,5 +1,5 @@
 /// <reference types="react" />
-declare const SwStepper: ({ stepperText, title, steps, description, activeStep, descriptionTooltip, backButton, nextbutton, }: {
+declare const SwStepper: ({ stepperText, title, steps, description, activeStep, descriptionTooltip, backButton, nextbutton, mode, }: {
     stepperText: any;
     title: any;
     steps: any;
@@ -8,5 +8,6 @@ declare const SwStepper: ({ stepperText, title, steps, description, activeStep, 
     descriptionTooltip?: any;
     backButton?: any;
     nextbutton?: any;
+    mode?: string;
 }) => JSX.Element;
 export default SwStepper;
