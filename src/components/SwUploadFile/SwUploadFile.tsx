@@ -128,7 +128,7 @@ const SwUploadFile = ({
   };
 
   return (
-    <div {...getRootProps({ className: "sw-uploader-wrapper", style: sx })}>
+    <UploadWrapper {...getRootProps({ className: "sw-uploader-wrapper", style: sx })}>
       <Avatar
         alt="Avatar"
         src={preview}
@@ -144,7 +144,7 @@ const SwUploadFile = ({
       </Avatar>
       <Action />
       <input {...getInputProps()} />
-    </div>
+    </UploadWrapper>
   );
 };
 

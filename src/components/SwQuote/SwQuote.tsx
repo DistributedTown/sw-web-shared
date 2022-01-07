@@ -15,7 +15,7 @@ const CustomizedQuote = styled(Box)(
   padding: 20px;
   &.show-border {
     border: 3px solid ${theme.palette.background.paper};
-    background: ${theme.palette.background.dark};
+    background: ${theme.palette.background.default};
     box-shadow:  ${theme.shadows[1]};
   }
 `
