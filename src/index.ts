@@ -48,10 +48,11 @@ import { default as Shape5Svg } from "./components/Svg/Background Shapes/Shape5S
 import { default as Shape6Svg } from "./components/Svg/Background Shapes/Shape6Svg";
 import { default as Shape7Svg } from "./components/Svg/Background Shapes/Shape7Svg";
 import { default as DitoCreditsSuccessSvg } from "./components/Svg/Icons/DitoCreditsSuccessSvg";
+import { default as DitoCreditsSuccessLogoSvg } from "./components/Svg/Icons/DitoCreditsSuccessLogoSvg";
+import { default as DitoCreditsNewSvg } from "./components/Svg/Icons/DitoCreditsNewSvg";
 import { default as SwLogoSvg } from "./components/Svg/Main Design/SwLogoSvg";
 import { default as DitoLogoFullSvg } from "./components/Svg/Main Design/DitoLogoFullSvg";
 import { default as MainBackgroundSvg } from "./components/Svg/Main Design/MainBackgroundSvg";
-
 import { default as ArchitectureSvg } from "./components/Svg/Categories/ArchitectureSvg";
 import { default as BackendSvg } from "./components/Svg/Categories/BackendSvg";
 import { default as BlockchainSvg } from "./components/Svg/Categories/BlockchainSvg";
@@ -98,7 +99,9 @@ export {
   QRCodeSvg,
   CreateUnselSvg,
   DitoCreditsSvg,
+  DitoCreditsNewSvg,
   DitoCreditsSuccessSvg,
+  DitoCreditsSuccessLogoSvg,
   GameTheorySvg,
   GameTheorySvg2,
   NetworkDesignSvg,
