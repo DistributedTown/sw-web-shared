@@ -81,7 +81,6 @@ const SwStepper = ({
   dotStyles = {},
   maxWidth = "450px",
 }) => {
-  console.log("description: ", description);
   const Wrapper = CustomizedStepperWrapper(mode);
   return (
     <Wrapper sx={{ width: "100%", position: "relative" }}>

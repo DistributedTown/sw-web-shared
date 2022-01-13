@@ -12,8 +12,6 @@ export interface SwButtonProps extends ButtonProps {
 
 const CustomizedButton = styled(Button)((props) => {
   const { theme } = props;
-
-  console.log(props, "props");
   return `
     width: 100%;
     background-color: ${theme.palette.text.primary};

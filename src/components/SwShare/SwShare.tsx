@@ -41,7 +41,6 @@ function SwShare(props: SimpleDialogProps) {
   } = props;
 
   const handleClose = () => {
-    console.log('close,', onClose)
     onClose();
   };
 
