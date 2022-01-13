@@ -22,66 +22,92 @@ function DefaultUploadSvg() {
   );
 }
 
-const UploadWrapper = styled("div")(
-  ({ theme }) => `
-  position: relative;
-  .MuiAvatar-root {
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    transition: ${theme.transitions.create(["opacity", "transform"])};
-    backface-visibility: hidden;
-    border: 3px solid ${theme.palette.background.paper};
-    border-radius: 0;
-    background: ${theme.palette.background.paper};
-    box-sizing: border-box;
-  }
-
-  .MuiSvgIcon-root {
-    fill: ${theme.palette.primary.main};
-  }
-
-  .sw-upload-action {
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    display: flex;
-    top: 0;
-    left: 0;
-    align-items: center;
-    justify-content: center;
-    transition: ${theme.transitions.create(["opacity", "transform"])};
-
-    .MuiAvatar-fallback {
-      fill: ${theme.palette.primary.main};
+const UploadWrapper = styled("div")((props) => {
+  const { theme, mode } = props as any;
+  return `
+    position: relative;
+    .MuiAvatar-root {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      transition: ${theme.transitions.create(["opacity", "transform"])};
+      backface-visibility: hidden;
+      border: 3px solid ${
+        mode === "light"
+          ? theme.palette.background.paper
+          : theme.palette.background.default
+      };
+      border-radius: 0;
+      background: ${
+        mode === "light"
+          ? theme.palette.background.paper
+          : theme.palette.background.default
+      };
+      box-sizing: border-box;
     }
-
+  
     .MuiSvgIcon-root {
-      width: 1.5em;
-      height: 1.5em;
-
-      &.remove {
-        color: ${theme.palette.error.main};
+      fill: ${
+        mode === "light"
+          ? theme.palette.primary.main
+          : theme.palette.text.primary
+      };
+    }
+  
+    .sw-upload-action {
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      top: 0;
+      left: 0;
+      align-items: center;
+      justify-content: center;
+      transition: ${theme.transitions.create(["opacity", "transform"])};
+  
+      .MuiAvatar-fallback {
+        fill: ${
+          mode === "light"
+            ? theme.palette.primary.main
+            : theme.palette.text.primary
+        };
       }
-
-      &.upload {
-        fill: ${theme.palette.background.paper};
+  
+      .MuiSvgIcon-root {
+        width: 1.5em;
+        height: 1.5em;
+  
+        &.remove {
+          color: ${theme.palette.error.main};
+          
+        }
+  
+        &.upload {
+          fill: ${
+            mode === "light"
+              ? theme.palette.background.paper
+              : theme.palette.primary.main
+          };
+        }
       }
     }
-  }
-
-  &:hover .MuiAvatar-root {
-    opacity: 0.3;
-    border-color: ${theme.palette.background.paper};
-  }
-
-  &:hover .sw-upload-action {
-    opacity: 1;
-  }
-
-`
-);
+  
+    &:hover .MuiAvatar-root {
+      opacity: 0.3;
+      border-color: ${
+        mode === "light"
+          ? theme.palette.background.paper
+          : theme.palette.primary.main
+      };
+    }
+  
+    &:hover .sw-upload-action {
+      opacity: 1;
+    }
+  
+  `;
+});
 
 const SwUploadFile = ({
   multiple = false,
@@ -89,8 +115,10 @@ const SwUploadFile = ({
     width: "120px",
     height: "120px",
   } as any,
+  mode = "light",
   initialPreviewUrl = null,
   fileChange = (file: File) => null,
+  defaulUploadIcon = <DefaultUploadSvg />,
 }: any) => {
   const [preview, setPreview] = useState(initialPreviewUrl);
   const { getRootProps, getInputProps, open } = useDropzone({
@@ -128,7 +156,11 @@ const SwUploadFile = ({
   };
 
   return (
-    <UploadWrapper {...getRootProps({ className: "sw-uploader-wrapper", style: sx })}>
+    <UploadWrapper
+      // @ts-ignore
+      mode={mode}
+      {...getRootProps({ className: "sw-uploader-wrapper", style: sx })}
+    >
       <Avatar
         alt="Avatar"
         src={preview}
@@ -140,7 +172,7 @@ const SwUploadFile = ({
           },
         }}
       >
-        <DefaultUploadSvg />
+        {defaulUploadIcon}
       </Avatar>
       <Action />
       <input {...getInputProps()} />
