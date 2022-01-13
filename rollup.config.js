@@ -10,7 +10,7 @@ import externals from "rollup-plugin-node-externals";
 const packageJson = require("./package.json");
 
 export default {
-  input: ["src/index.ts", "src/utils/index.ts"],
+  input: ["src/index.ts"],
   output: [
     {
       file: packageJson.main,

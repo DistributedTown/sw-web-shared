@@ -79,6 +79,13 @@ import { default as SwProgressBar } from "./components/SwProgressBar/SwLinearPro
 import { default as SwShare } from "./components/SwShare/SwShare";
 import { default as SwClipboardCopy } from "./components/SwShare/clipboard-copy";
 import { default as SwStepper } from "./components/SwStepper/SwStepper";
+import { asyncPoll } from "./utils/async-poller";
+import { envionmentGenerator, ensureVariablesExist } from "./utils/env";
+import { ParseSWErrorMessage } from "./utils/parse-smart-contact-error";
+import { toPascalCase } from "./utils/pascal-case";
+import { requestTimeout } from "./utils/request-timeout";
+import createShadows from "./utils/shadows";
+import { toBase64, isBase64, base64toFile } from "./utils/to-base-64";
 
 export {
   SwLayout,
@@ -160,4 +167,15 @@ export {
   SwClipboardCopy,
   SwShare,
   SwStepper,
+  // utils
+  asyncPoll,
+  ParseSWErrorMessage,
+  toPascalCase,
+  requestTimeout,
+  toBase64,
+  isBase64,
+  base64toFile,
+  createShadows,
+  envionmentGenerator,
+  ensureVariablesExist,
 };

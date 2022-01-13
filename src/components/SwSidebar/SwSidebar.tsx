@@ -46,6 +46,7 @@ export interface SwSidebarProps {
   handleToggle: () => any;
   sx?: any;
   preventClose?: boolean;
+  className?: string;
 }
 
 const DrawerFooter = styled("div")(({ theme }) => ({
@@ -124,6 +125,7 @@ const SwSidebar = ({
   handleToggle = () => null,
   children,
   sx = {},
+  className = "",
 }: SwSidebarProps) => {
   const theme = createTheme();
 
@@ -186,7 +188,7 @@ const SwSidebar = ({
           ...(sx || {}),
         },
       }}
-      className={`sw-main-sidebar ${mobile ? "is-mobile" : ""}`}
+      className={`sw-main-sidebar ${mobile ? "is-mobile" : ""} ${className}`}
       variant={mobile ? "temporary" : "permanent"}
       open={open}
     >

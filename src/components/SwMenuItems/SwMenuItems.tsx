@@ -8,6 +8,7 @@ import Tooltip from "@mui/material/Tooltip/Tooltip";
 import { styled } from "@mui/material";
 
 interface SwMenuItemBase {
+  type: string;
   color?: "primary" | "warn" | "secondary";
   icon?: React.Component;
   component?: React.Component;
@@ -16,18 +17,16 @@ interface SwMenuItemBase {
 }
 
 interface SwMenuDivider {
-  type: "divider";
+  type: string;
   dashed?: boolean;
 }
 
 interface SwMenuItemButton extends SwMenuItemBase {
-  type: "button";
   label: string;
   onClick?: (info: any) => void;
 }
 
 interface SwMenuItemHref extends SwMenuItemBase {
-  type: "href";
   label: string;
   href?: string;
 }
@@ -133,12 +132,14 @@ const SwMenuItems = ({
                 // @ts-ignore
                 activeClassName="active-link"
                 component={NavLink}
-                disabled={item.disabled}
+                disabled={(item as SwMenuItemHref).disabled}
                 to={(item as SwMenuItemHref).href}
                 replace
                 key={id}
               >
-                <div className="sw-sidebar-menu-icon">{item.icon}</div>
+                <div className="sw-sidebar-menu-icon">
+                  {(item as SwMenuItemHref).icon}
+                </div>
                 <ListItemText
                   sx={{
                     fontSize: "body1",
@@ -156,8 +157,14 @@ const SwMenuItems = ({
             title={!open ? (item as SwMenuItemButton).label : ""}
             placement="right"
           >
-            <ListItem onClick={item.onClick} key={id} disabled={item.disabled}>
-              <div className="sw-sidebar-menu-icon">{item.icon}</div>
+            <ListItem
+              onClick={(item as SwMenuItemButton).onClick}
+              key={id}
+              disabled={(item as SwMenuItemButton).disabled}
+            >
+              <div className="sw-sidebar-menu-icon">
+                {(item as SwMenuItemButton).icon}
+              </div>
               <ListItemText primary={(item as SwMenuItemButton).label} />
             </ListItem>
           </Tooltip>

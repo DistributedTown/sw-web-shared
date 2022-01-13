@@ -31,6 +31,7 @@ export interface SwSidebarProps {
     handleToggle: () => any;
     sx?: any;
     preventClose?: boolean;
+    className?: string;
 }
-declare const SwSidebar: ({ open, width, mode, preventClose, backgroundColor, sidebarTopIcon, mobile, handleToggle, children, sx, }: SwSidebarProps) => JSX.Element;
+declare const SwSidebar: ({ open, width, mode, preventClose, backgroundColor, sidebarTopIcon, mobile, handleToggle, children, sx, className, }: SwSidebarProps) => JSX.Element;
 export default SwSidebar;

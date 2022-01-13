@@ -78,9 +78,10 @@ const SwStepper = ({
   backButton = null,
   nextbutton = null,
   mode = "light",
+  dotStyles = {},
+  maxWidth = "450px",
 }) => {
-
-  console.log("hereeeeeeeee------------");
+  console.log("description: ", description);
   const Wrapper = CustomizedStepperWrapper(mode);
   return (
     <Wrapper sx={{ width: "100%", position: "relative" }}>
@@ -112,7 +113,7 @@ const SwStepper = ({
         nextButton={nextbutton}
         backButton={backButton}
       />
-      <Box sx={{ maxWidth: "450px", width: "100%", margin: "0 auto" }}>
+      <Box sx={{ maxWidth, width: "100%", margin: "0 auto" }}>
         <div
           key="stepper-dots"
           className="stepper-dots"
@@ -125,6 +126,7 @@ const SwStepper = ({
                   className={`stepper-dot ${
                     index === activeStep ? "active" : ""
                   }`}
+                  style={dotStyles}
                 >
                   {index < activeStep && (
                     <CheckIcon color={mode === "light" ? "info" : "primary"} />
@@ -135,47 +137,51 @@ const SwStepper = ({
             );
           })}
         </div>
-        <Typography
-          sx={{
-            color: mode === "light" ? "text.primary" : "primary.main",
-            textAlign: "center",
-            pb: 1,
-          }}
-          component="div"
-          variant="h2"
-        >
-          {title}
-        </Typography>
-        <Typography
-          sx={{
-            color: mode === "light" ? "text.primary" : "primary.main",
-            textAlign: "center",
-            pb: 2,
-            m: "0 -20px",
-          }}
-          component="div"
-          variant="subtitle1"
-        >
-          <Badge
+        {title && (
+          <Typography
             sx={{
-              padding: "0 8px",
+              color: mode === "light" ? "text.primary" : "primary.main",
+              textAlign: "center",
+              pb: 1,
             }}
-            badgeContent={
-              descriptionTooltip && (
-                <Tooltip title={descriptionTooltip}>
-                  <InfoIcon
-                    sx={{
-                      fontSize: "1rem",
-                      position: "absolute",
-                    }}
-                  />
-                </Tooltip>
-              )
-            }
+            component="div"
+            variant="h2"
           >
-            {description}
-          </Badge>
-        </Typography>
+            {title}
+          </Typography>
+        )}
+        {description && (
+          <Typography
+            sx={{
+              color: mode === "light" ? "text.primary" : "primary.main",
+              textAlign: "center",
+              pb: 2,
+              m: "0 -20px",
+            }}
+            component="div"
+            variant="subtitle1"
+          >
+            <Badge
+              sx={{
+                padding: "0 8px",
+              }}
+              badgeContent={
+                descriptionTooltip && (
+                  <Tooltip title={descriptionTooltip}>
+                    <InfoIcon
+                      sx={{
+                        fontSize: "1rem",
+                        position: "absolute",
+                      }}
+                    />
+                  </Tooltip>
+                )
+              }
+            >
+              {description}
+            </Badge>
+          </Typography>
+        )}
       </Box>
     </Wrapper>
   );

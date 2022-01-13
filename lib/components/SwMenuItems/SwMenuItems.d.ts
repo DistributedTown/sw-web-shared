@@ -1,5 +1,6 @@
 import React from "react";
 interface SwMenuItemBase {
+    type: string;
     color?: "primary" | "warn" | "secondary";
     icon?: React.Component;
     component?: React.Component;
@@ -7,16 +8,14 @@ interface SwMenuItemBase {
     disabled?: boolean;
 }
 interface SwMenuDivider {
-    type: "divider";
+    type: string;
     dashed?: boolean;
 }
 interface SwMenuItemButton extends SwMenuItemBase {
-    type: "button";
     label: string;
     onClick?: (info: any) => void;
 }
 interface SwMenuItemHref extends SwMenuItemBase {
-    type: "href";
     label: string;
     href?: string;
 }
