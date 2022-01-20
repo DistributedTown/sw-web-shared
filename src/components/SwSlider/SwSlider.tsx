@@ -9,6 +9,7 @@ import {
 
 export interface SwSliderProps extends SliderProps {
   mode?: "white" | "black";
+  variant?: "dotted" | "filled";
 }
 
 const CustomizedSlider = styled(Slider)(
@@ -51,64 +52,93 @@ const CustomizedSlider = styled(Slider)(
         text-align: center;
       }
     }
-  
-    &.Mui-disabled .MuiSlider-thumb {
-      border: 1px solid ${theme.palette.primary.main};
-      color: ${theme.palette.primary.main};
-      background-color: ${theme.palette.text.disabled};
-    }
-  
-    &.mode-white {
-      color: ${theme.palette.text.primary};
-  
-      .MuiSlider-mark {
-        background-color: ${theme.palette.background.paper};
-      }
-  
-      &:not(.Mui-disabled) .MuiSlider-thumb {
-        background: ${theme.palette.primary.main};
-        border: 1px solid ${theme.palette.background.paper};
-        color: ${theme.palette.text.primary};
-      }
-    }
-  
-    &.mode-black {
-      color: ${theme.palette.primary.main};
-  
-      .MuiSlider-mark {
-        background-color: ${theme.palette.primary.main};
-      }
-  
-      &:not(.Mui-disabled) .MuiSlider-thumb {
-        background: ${theme.palette.background.paper};
+
+
+    &.variant-dotted {
+      &.Mui-disabled .MuiSlider-thumb {
         border: 1px solid ${theme.palette.primary.main};
         color: ${theme.palette.primary.main};
+        background-color: ${theme.palette.text.disabled};
+      }
+    
+      &.mode-white {
+        color: ${theme.palette.text.primary};
+    
+        .MuiSlider-mark {
+          background-color: ${theme.palette.background.paper};
+        }
+    
+        &:not(.Mui-disabled) .MuiSlider-thumb {
+          background: ${theme.palette.primary.main};
+          border: 1px solid ${theme.palette.background.paper};
+          color: ${theme.palette.text.primary};
+        }
+      }
+    
+      &.mode-black {
+        color: ${theme.palette.primary.main};
+    
+        .MuiSlider-mark {
+          background-color: ${theme.palette.primary.main};
+        }
+    
+        &:not(.Mui-disabled) .MuiSlider-thumb {
+          background: ${theme.palette.background.paper};
+          border: 1px solid ${theme.palette.primary.main};
+          color: ${theme.palette.primary.main};
+        }
+      }
+    }
+
+    &.variant-filled {
+      width: unset;
+      border: 1px solid;
+
+      .MuiSlider-thumb {
+        background: transparent;
+        border: none;
+        transition: left .4s linear;
+        
+        &:hover, &.Mui-active, &.Mui-focusVisible, &:before {
+          box-shadow: none;
+        }
       }
 
+      .MuiSlider-track {
+        height: 100%;
+        transform: translate(0, -50%);
+      }
+
+      &.mode-black {
+        .MuiSlider-track {
+          background-color: ${theme.palette.primary.main};
+        }
+      }
     }
   `
 );
 
-interface SwThumbComponentProps extends React.HTMLAttributes<any> {
-}
+interface SwThumbComponentProps extends React.HTMLAttributes<any> {}
 
-const SwThumbComponent = (value: number) => {
+const SwThumbComponent = (value: number, variant: "filled" | "dotted") => {
   return (props: SwThumbComponentProps) => {
     const { children, ...other } = props;
     return (
       <SliderThumb {...other}>
         {children}
-        <Typography
-          className="sw-thumb-value"
-          component="span"
-          variant="subtitle2"
-        >
-          {value || 0}
-        </Typography>
+        {variant === "dotted" && (
+          <Typography
+            className="sw-thumb-value"
+            component="span"
+            variant="subtitle2"
+          >
+            {value || 0}
+          </Typography>
+        )}
       </SliderThumb>
     );
-  }
-}
+  };
+};
 
 const SwMarkComponent = () => {
   return (props) => {
@@ -117,15 +147,20 @@ const SwMarkComponent = () => {
   };
 };
 
-const SwSlider = ({ className, mode = "black", ...rest }: SwSliderProps) => {
+const SwSlider = ({
+  className,
+  mode = "black",
+  variant = "dotted",
+  ...rest
+}: SwSliderProps) => {
   return (
     <CustomizedSlider
       {...rest}
       components={{
-        Thumb: SwThumbComponent(rest.value as number),
+        Thumb: SwThumbComponent(rest.value as number, variant),
         Mark: SwMarkComponent(),
       }}
-      className={`sw-slider ${className} mode-${mode}`}
+      className={`sw-slider ${className} variant-${variant} mode-${mode}`}
     />
   );
 };

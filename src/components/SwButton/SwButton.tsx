@@ -140,8 +140,14 @@ const CustomizedButton = styled(Button)((props) => {
   
     &.Mui-disabled {
       background-color: ${theme.palette.text.disabled} !important;
-      & > .sw-btn-label {
+      & > .sw-btn-label, svg {
         color: #616161;
+      }
+
+      .MuiButton-endIcon, .MuiButton-startIcon {
+        svg {
+          fill: #616161;
+        }
       }
     }
   `;

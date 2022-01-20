@@ -28,7 +28,7 @@ const CopyWrapper = styled("div")(
 `
 );
 
-function SwClipboardCopy({ url, mode }) {
+function SwClipboardCopy({ url, mode, sx = {}, trim = (v) => v }) {
   const [isCopied, setIsCopied] = useState(false);
 
   // This is the function we wrote earlier
@@ -57,9 +57,21 @@ function SwClipboardCopy({ url, mode }) {
   };
 
   return (
-    <CopyWrapper className={`copy-wrapper ${mode}`} onClick={handleCopyClick}>
-      <Typography variant="h4" color="info.dark" component="span">
-        {url}
+    <CopyWrapper
+      style={sx}
+      className={`copy-wrapper ${mode}`}
+      onClick={handleCopyClick}
+    >
+      <Typography
+        variant="h4"
+        sx={{
+          textAlign: "center",
+          flex: 1,
+        }}
+        color="info.dark"
+        component="span"
+      >
+        {trim(url)}
       </Typography>
       <div
         className="copy-text"
