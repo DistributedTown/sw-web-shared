@@ -87,6 +87,7 @@ import { toPascalCase } from "./utils/pascal-case";
 import { requestTimeout } from "./utils/request-timeout";
 import createShadows from "./utils/shadows";
 import { toBase64, isBase64, base64toFile } from "./utils/to-base-64";
+import { SkillWalletIDBadgeGenerator } from "./utils/SkillWalletIDBadge/SkillWalletIDBadgeGenerator";
 
 export {
   SwLayout,
@@ -181,4 +182,5 @@ export {
   createShadows,
   envionmentGenerator,
   ensureVariablesExist,
+  SkillWalletIDBadgeGenerator,
 };
