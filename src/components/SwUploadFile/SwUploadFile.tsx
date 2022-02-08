@@ -23,9 +23,11 @@ function DefaultUploadSvg() {
 }
 
 const UploadWrapper = styled("div")((props) => {
-  const { theme, mode } = props as any;
+  const { theme, mode, variant } = props as any;
   return `
     position: relative;
+    cursor: pointer;
+
     .MuiAvatar-root {
       width: 100%;
       height: 100%;
@@ -37,13 +39,16 @@ const UploadWrapper = styled("div")((props) => {
           ? theme.palette.background.paper
           : theme.palette.background.default
       };
-      border-radius: 0;
       background: ${
         mode === "light"
           ? theme.palette.background.paper
           : theme.palette.background.default
       };
       box-sizing: border-box;
+    }
+
+    &.rounded, &.rounded .MuiAvatar-root {
+      border-radius: 50%;
     }
   
     .MuiSvgIcon-root {
@@ -92,25 +97,46 @@ const UploadWrapper = styled("div")((props) => {
         }
       }
     }
-  
-    &:hover .MuiAvatar-root {
-      opacity: 0.3;
-      border-color: ${
-        mode === "light"
-          ? theme.palette.background.paper
-          : theme.palette.primary.main
-      };
+
+
+    &.rounded {
+      border-width: 1px;
+      border-style: solid;
+
+      .MuiAvatar-root {
+        background: transparent;
+        border: 1px solid ${
+          mode === "light"
+            ? theme.palette.background.paper
+            : theme.palette.background.default
+        };
+      }
+
+      &:hover {
+        
+      }
     }
-  
-    &:hover .sw-upload-action {
-      opacity: 1;
+
+    &.square {
+      &:hover .MuiAvatar-root {
+        opacity: 0.3;
+        border-color: ${
+          mode === "light"
+            ? theme.palette.background.paper
+            : theme.palette.primary.main
+        };
+      }
+    
+      &:hover .sw-upload-action {
+        opacity: 1;
+      }
     }
-  
   `;
 });
 
 const SwUploadFile = ({
   multiple = false,
+  variant = "square",
   sx = {
     width: "120px",
     height: "120px",
@@ -159,10 +185,15 @@ const SwUploadFile = ({
     <UploadWrapper
       // @ts-ignore
       mode={mode}
-      {...getRootProps({ className: "sw-uploader-wrapper", style: sx })}
+      variant={variant}
+      {...getRootProps({
+        className: `${variant} sw-uploader-wrapper`,
+        style: sx,
+      })}
     >
       <Avatar
         alt="Avatar"
+        variant={variant}
         src={preview}
         imgProps={{
           style: {
