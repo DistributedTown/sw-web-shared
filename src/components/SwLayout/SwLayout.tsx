@@ -27,7 +27,8 @@ const CustomizedLayout = styled(Box)(
     justify-content: flex-end;
     padding: 0 20px;
     position: relative;
-    height: 50px;
+    height: 60px;
+    margin-bottom: 20px;
   }
 `
 );
@@ -44,22 +45,24 @@ const SwLayout = ({
 }: SwLayoutProps) => {
   return (
     <>
-      {backgroundUrl && <div
-        className={`sw-background ${className}`}
-        style={{
-          display: "flex",
-          backgroundImage: backgroundUrl,
-          backgroundColor: "black",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          position: "fixed",
-          width: "100%",
-          height: "100%",
-          top: 0,
-          left: 0,
-          zIndex: -1,
-        }}
-      ></div>}
+      {backgroundUrl && (
+        <div
+          className={`sw-background ${className}`}
+          style={{
+            display: "flex",
+            backgroundImage: backgroundUrl,
+            backgroundColor: "black",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            position: "fixed",
+            width: "100%",
+            height: "100%",
+            top: 0,
+            left: 0,
+            zIndex: -1,
+          }}
+        ></div>
+      )}
       <CustomizedLayout
         sx={{
           display: "flex",
@@ -75,22 +78,24 @@ const SwLayout = ({
             overflow: "hidden",
           }}
         >
-          <Container className="sw-layout-top" maxWidth="xl" sx={{ display: hideTop ? 'none' : 'flex' }}>
+          <Container
+            className="sw-layout-top"
+            maxWidth="xl"
+            sx={{ display: hideTop ? "none" : "flex" }}
+          >
             {top}
           </Container>
 
-
-          <SwScrollbar sx={{
-            height: '100%',
-            ...(scrollbarStyles || {})
-          }}>
-
+          <SwScrollbar
+            sx={{
+              height: "100%",
+              ...(scrollbarStyles || {}),
+            }}
+          >
             <Container maxWidth="xl" disableGutters={disableGutters}>
               {children}
             </Container>
           </SwScrollbar>
-
-
         </Box>
       </CustomizedLayout>
     </>
